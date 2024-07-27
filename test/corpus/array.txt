@@ -1,0 +1,18 @@
+==================
+Arrays
+==================
+
+Array pack_of_cards --> 52;
+Array foo table 5;
+-----
+
+(source_file
+    (array
+        (identifier)
+        (number)
+    )
+    (array
+        (identifier)
+        (number)
+    )
+)

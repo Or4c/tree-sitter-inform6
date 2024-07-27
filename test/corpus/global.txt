@@ -1,0 +1,18 @@
+==================
+Globals
+==================
+
+Global foo = 7;
+Global bar;
+
+-----
+
+(source_file
+    (global
+        (identifier)
+        (number)
+    )
+    (global
+        (identifier)
+    )
+)

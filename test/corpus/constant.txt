@@ -1,0 +1,18 @@
+==================
+Constants
+==================
+
+Constant MAX_CARRIED = 7;
+Constant FOO;
+
+-----
+
+(source_file
+    (constant
+        (identifier)
+        (number)
+    )
+    (constant
+        (identifier)
+    )
+)

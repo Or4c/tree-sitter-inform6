@@ -1,0 +1,13 @@
+==================
+Strings
+==================
+
+"Hello World"
+'Hello World^'
+
+-----
+
+(source_file
+   (string)
+   (string)
+)
