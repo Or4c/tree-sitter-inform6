@@ -35,14 +35,34 @@ module.exports = grammar({
       seq($.string_double_quoted, ";"),
     ),
 
-    // TODO: Finish conditionals
-    conditional: ($) => seq(
-      choice("if", "switch"),
-      "(", $._expression, ")", "{", repeat($._statement), "}", ";"
+    conditional: ($) => choice(
+      $._if,
+      $._switch
     ),
 
+    _if: ($) => prec.left(seq("if",
+      "(", $._expression, ")",
+      choice(
+        seq("{", repeat($._statement), "}"),
+        seq($._statement)
+      ),
+      optional(
+        choice(
+          seq("else", $._statement),
+          seq("else", "{", repeat($._statement), "}")
+        )
+      )
+    )),
+
+    _switch: ($) => seq("switch", "(", $._expression, ")", "{",
+      repeat($.case),
+      "}"
+    ),
+
+    case: ($) => seq($._expression, repeat(seq(",", $._expression)), ":", $._statement),
+
     // TODO: Finish loops
-    loop: ($) => "TODO!",
+    loop: ($) => "TODO",
 
     // Misc
     comment: ($) => /!.*\n/,
@@ -57,6 +77,7 @@ module.exports = grammar({
     _expression: ($) => choice(
       $.identifier,
       $.number,
+      $.boolean,
       $.string_single_quoted,
       $.string_double_quoted,
       $.binary_expression,
@@ -65,10 +86,13 @@ module.exports = grammar({
 
     // Expression rules
 
-    binary_expression: ($) => prec.left(1, seq($._expression, prec(2, choice('\+', '\-', '\/', '\*', '\%')), $._expression)),
+    binary_expression: ($) => prec.left(1, seq($._expression, prec(2, $.operator), $._expression)),
     unary_expression: ($) => prec.left(3, seq(choice('-', '++', '--'), $._expression, optional(choice('--', '++')))),
 
+
     // Literals
+    operator: ($) => choice('\+', '\-', '\/', '\*', '\%', '\<', '\<\=', '\>\=', '\=\=', '\!\=', 'or', 'has', 'hasnt'),
+    boolean: ($) => choice("true", "false"),
     identifier: ($) => /[a-zA-Z_]+[a-zA-Z0-9_]*/,
     number: ($) => choice(/\d+/, /\$[0-9a-fA-F]+/, /\$\$(0|1)+/),
     string_single_quoted: ($) => seq("'", /[^\"\']*/, "'"),

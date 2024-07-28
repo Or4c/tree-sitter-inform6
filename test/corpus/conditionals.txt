@@ -1,0 +1,190 @@
+==================
+If single statement
+==================
+
+[ Main;
+    if (true) print "hello world";
+];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier))
+        (conditional
+            (boolean)
+            (print
+                (string_double_quoted)
+            )
+        )
+    )
+)
+
+==================
+If block
+==================
+
+[ Main;
+    if (true) {
+        foo = 5;
+        print "hello world";
+    }
+];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier))
+        (conditional
+            (boolean)
+            (local_var_decl
+                (identifier)
+                (number)
+            )
+            (print
+                (string_double_quoted)
+            )
+        )
+    )
+)
+
+==================
+If else single statement
+==================
+
+[ Main;
+    if (true) print "hello world"; else print "goodbye world";
+];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier))
+        (conditional
+            (boolean)
+            (print
+                (string_double_quoted)
+            )
+            (print
+                (string_double_quoted)
+            )
+        )
+    )
+)
+
+==================
+If else block
+==================
+
+[ Main;
+    if (true) {
+        foo = 5;
+        print "hello world";
+    } else {
+        foo = 42;
+        print "goodbye world";
+    }
+];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier))
+        (conditional
+            (boolean)
+            (local_var_decl
+                (identifier)
+                (number)
+            )
+            (print
+                (string_double_quoted)
+            )
+            (local_var_decl
+                (identifier)
+                (number)
+            )
+            (print
+                (string_double_quoted)
+            )
+        )
+    )
+)
+
+==================
+If else mixed block
+==================
+
+[ Main;
+    if (true) {
+        foo = 5;
+        print "hello world";
+    } else print "goodbye";
+];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier))
+        (conditional
+            (boolean)
+            (local_var_decl
+                (identifier)
+                (number)
+            )
+            (print
+                (string_double_quoted)
+            )
+            (print
+                (string_double_quoted)
+            )
+        )
+    )
+)
+
+==================
+Switch
+==================
+
+[ Main;
+   switch(birds_eaten) {
+        0: print "sad";
+        1, 2, 3: print "not bad!";
+        4: print "the best";
+        default: print "same same";
+   }
+];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier))
+        (conditional
+            (identifier)
+            (case
+                (number)
+                (print
+                    (string_double_quoted)
+                )
+            )
+            (case
+                (number)
+                (number)
+                (number)
+                (print
+                    (string_double_quoted)
+                )
+            )
+            (case
+                (number)
+                (print
+                    (string_double_quoted)
+                )
+            )
+            (case
+                (identifier)
+                (print
+                    (string_double_quoted)
+                )
+            )
+        )
+    )
+)
