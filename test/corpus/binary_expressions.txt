@@ -1,0 +1,28 @@
+==================
+Binary Expressions
+==================
+
+Constant MAX_CARRIED = 7 + 1;
+Constant MAX_CARRIED = 7 * 1 - 1;
+
+-----
+
+(source_file
+    (constant
+        (identifier)
+        (binary_expression
+            (number)
+            (number)
+        )
+    )
+    (constant
+        (identifier)
+        (binary_expression
+            (binary_expression
+                (number)
+                (number)
+            )
+            (number)
+        )
+    )
+)

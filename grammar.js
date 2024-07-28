@@ -4,6 +4,8 @@ module.exports = grammar({
 
     source_file: ($) => repeat($._directive),
 
+    word: $ => $.identifier,
+
     _directive: ($) => choice(
       $.comment,
       $.constant,
@@ -14,34 +16,62 @@ module.exports = grammar({
 
     _statement: ($) => choice(
       $.comment,
-      $.print
+      $.print,
+      $.routine_message,
+      $.local_var_decl,
+      $.return,
+      $.conditional,
+      $.loop
     ),
 
     // Statement Rules
-    print: ($) => seq("print", $._expression, ";"),
+    print: ($) => seq("print", repeat(seq($._expression, ",")), $._expression, ";"),
+    routine_message: ($) => seq($.identifier, "(", repeat(seq($._expression, ",")), optional($._expression), ")", ";"),
+    local_var_decl: ($) => seq($.identifier, "=", $._expression, ";"),
+    return: ($) => choice(
+      seq("return", optional($._expression), ";"),
+      seq("rtrue", ";"),
+      seq("rfalse", ";"),
+      seq($.string_double_quoted, ";"),
+    ),
 
+    // TODO: Finish conditionals
+    conditional: ($) => seq(
+      choice("if", "switch"),
+      "(", $._expression, ")", "{", repeat($._statement), "}", ";"
+    ),
+
+    // TODO: Finish loops
+    loop: ($) => "TODO!",
+
+    // Misc
     comment: ($) => /!.*\n/,
-
-    //TODO: fix this!
-    function_sig: ($) => seq(optional(repeat1($.identifier)), ";"),
+    function_sig: ($) => choice(";", seq(repeat1($.identifier), ";")),
 
     // Directive Rules
     constant: ($) => seq("Constant", $.identifier, optional(seq("=", $._expression)), ";"),
     global: ($) => seq("Global", $.identifier, optional(seq("=", $._expression)), ";"),
     array: ($) => seq("Array", $.identifier, choice("-->", "table"), $._expression, ";"),
-    routine: ($) => seq("[", $.function_sig, repeat(optional($._statement)), "]", ";"),
+    routine: ($) => seq("[", $.function_sig, repeat($._statement), "]", ";"),
 
     _expression: ($) => choice(
       $.identifier,
       $.number,
-      $.string
+      $.string_single_quoted,
+      $.string_double_quoted,
+      $.binary_expression,
+      $.unary_expression
     ),
 
     // Expression rules
 
+    binary_expression: ($) => prec.left(1, seq($._expression, prec(2, choice('\+', '\-', '\/', '\*', '\%')), $._expression)),
+    unary_expression: ($) => prec.left(3, seq(choice('-', '++', '--'), $._expression, optional(choice('--', '++')))),
+
     // Literals
-    identifier: ($) => /[a-zA-Z_]+/,
-    number: ($) => /\d+/,
-    string: ($) => choice(seq("\"", /.*/, "\""), seq("\'", /.*/, "\'"))
+    identifier: ($) => /[a-zA-Z_]+[a-zA-Z0-9_]*/,
+    number: ($) => choice(/\d+/, /\$[0-9a-fA-F]+/, /\$\$(0|1)+/),
+    string_single_quoted: ($) => seq("'", /[^\"\']*/, "'"),
+    string_double_quoted: ($) => seq('"', /[^\"\']*/, '"')
   },
 });

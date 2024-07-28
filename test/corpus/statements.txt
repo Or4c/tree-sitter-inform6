@@ -1,0 +1,75 @@
+==================
+Routine Message
+==================
+
+[ Main;
+    Rosencrantz();
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (routine_message (identifier))
+    )
+)
+
+==================
+Routine Message with Args
+==================
+
+[ Main;
+    Rosencrantz(9, "foo", "bar");
+    Foo(9);
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (routine_message (identifier) (number) (string_double_quoted) (string_double_quoted))
+        (routine_message (identifier) (number))
+    )
+)
+
+==================
+Local Vars
+==================
+
+[ Main;
+    foo = "Hello World";
+    print foo;
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (local_var_decl (identifier) (string_double_quoted))
+        (print (identifier))
+    )
+)
+
+==================
+Print with Interpolisation
+==================
+
+[ Main;
+    print "I am ", foo, " years old^";
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (print
+            (string_double_quoted)
+            (identifier)
+            (string_double_quoted)
+        )
+    )
+)

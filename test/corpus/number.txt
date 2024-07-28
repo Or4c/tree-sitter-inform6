@@ -2,12 +2,30 @@
 Numbers
 ==================
 
-120
-1
+Constant Base10 = 7;
+Constant Negative = -7;
+Constant Base16 = $10Ff;
+Constant Base2 = $$100101;
 
------
+---
 
 (source_file
-   (number)
-   (number)
+    (constant
+        (identifier)
+        (number)
+    )
+    (constant
+        (identifier)
+        (unary_expression
+            (number)
+        )
+    )
+    (constant
+        (identifier)
+        (number)
+    )
+    (constant
+        (identifier)
+        (number)
+    )
 )

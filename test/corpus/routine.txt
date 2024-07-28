@@ -3,5 +3,132 @@ Routines
 ==================
 
 [ Main;
-    print "Hello world^";
+    print "foo^";
 ];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier))
+        (print (string_double_quoted))
+    )
+)
+
+==================
+Routines (multiple args)
+==================
+
+[ Main a b c;
+    print "foo^";
+];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier) (identifier) (identifier) (identifier))
+        (print (string_double_quoted))
+    )
+)
+
+==================
+Routines (anonymous)
+==================
+
+[;
+    print "foo^";
+];
+
+---
+(source_file
+    (routine
+        (function_sig)
+        (print (string_double_quoted))
+    )
+)
+
+==================
+Routine return value
+==================
+
+[;
+    return "foo^";
+];
+
+---
+(source_file
+    (routine
+        (function_sig)
+        (return
+            (string_double_quoted)
+        )
+    )
+)
+
+
+==================
+Routine return true
+==================
+
+[;
+    return;
+];
+
+---
+(source_file
+    (routine
+        (function_sig)
+        (return)
+    )
+)
+
+==================
+Routine return true2
+==================
+
+[;
+    rtrue;
+];
+
+---
+(source_file
+    (routine
+        (function_sig)
+        (return)
+    )
+)
+
+
+==================
+Routine return false
+==================
+
+[;
+    rfalse;
+];
+
+---
+(source_file
+    (routine
+        (function_sig)
+        (return)
+    )
+)
+
+
+==================
+Routine print and return true
+==================
+
+[;
+    "Hello from bob";
+];
+
+---
+(source_file
+    (routine
+        (function_sig)
+        (return
+            (string_double_quoted)
+        )
+    )
+)
