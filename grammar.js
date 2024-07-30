@@ -21,8 +21,32 @@ module.exports = grammar({
       $.local_var_decl,
       $.return,
       $.conditional,
-      $.loop
+      $._loop,
+      $.increment,
+      $.decrement
     ),
+
+    _loop: ($) => choice(
+      $.for_loop,
+      $.while_loop,
+      $.do_loop,
+    ),
+
+    conditional: ($) => choice(
+      $._if,
+      $._switch
+    ),
+
+    _expression: ($) => choice(
+      $.identifier,
+      $.number,
+      $.boolean,
+      $.string_single_quoted,
+      $.string_double_quoted,
+      $.binary_expression,
+      $.unary_expression
+    ),
+
 
     // Statement Rules
     print: ($) => seq("print", repeat(seq($._expression, ",")), $._expression, ";"),
@@ -34,12 +58,10 @@ module.exports = grammar({
       seq("rfalse", ";"),
       seq($.string_double_quoted, ";"),
     ),
+    increment: ($) => seq($.identifier, "++", ";"),
+    decrement: ($) => seq($.identifier, "--", ";"),
 
-    conditional: ($) => choice(
-      $._if,
-      $._switch
-    ),
-
+    // Conditional Rules
     _if: ($) => prec.left(seq("if",
       "(", $._expression, ")",
       choice(
@@ -61,10 +83,19 @@ module.exports = grammar({
 
     case: ($) => seq($._expression, repeat(seq(",", $._expression)), ":", $._statement),
 
-    // TODO: Finish loops
-    loop: ($) => "TODO",
+    // Loop Rules
+    for_loop: ($) => seq(
+      'for', '(', optional(seq($.identifier, '=', $._expression)), ':', optional($._expression), ':', optional($._expression), ')',
+      choice($._statement, seq('{', repeat($._statement), '}')
+      )),
 
-    // Misc
+    while_loop: ($) => seq(
+      'while', '(', $._expression, ')', choice($._statement, seq('{', repeat($._statement), '}'))
+    ),
+
+    do_loop: ($) => seq('do', choice($._statement, seq('{', repeat($._statement), '}')), 'until', '(', $._expression, ')', ';'),
+
+    // Misc Rules
     comment: ($) => /!.*\n/,
     function_sig: ($) => choice(";", seq(repeat1($.identifier), ";")),
 
@@ -74,24 +105,12 @@ module.exports = grammar({
     array: ($) => seq("Array", $.identifier, choice("-->", "table"), $._expression, ";"),
     routine: ($) => seq("[", $.function_sig, repeat($._statement), "]", ";"),
 
-    _expression: ($) => choice(
-      $.identifier,
-      $.number,
-      $.boolean,
-      $.string_single_quoted,
-      $.string_double_quoted,
-      $.binary_expression,
-      $.unary_expression
-    ),
-
     // Expression rules
-
     binary_expression: ($) => prec.left(1, seq($._expression, prec(2, $.operator), $._expression)),
-    unary_expression: ($) => prec.left(3, seq(choice('-', '++', '--'), $._expression, optional(choice('--', '++')))),
-
+    unary_expression: ($) => prec.left(3, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
 
     // Literals
-    operator: ($) => choice('\+', '\-', '\/', '\*', '\%', '\<', '\<\=', '\>\=', '\=\=', '\!\=', 'or', 'has', 'hasnt'),
+    operator: ($) => choice('+', '-', '/', '*', '%', '<', '<=', '>=', '==', '!=', 'or', 'has', 'hasnt'),
     boolean: ($) => choice("true", "false"),
     identifier: ($) => /[a-zA-Z_]+[a-zA-Z0-9_]*/,
     number: ($) => choice(/\d+/, /\$[0-9a-fA-F]+/, /\$\$(0|1)+/),

@@ -1,0 +1,95 @@
+==================
+For Loop
+==================
+
+[ Main;
+
+    for(i = 0 : i < 10 : i++)
+    {
+        print "hello";
+    }
+
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (for_loop
+            (identifier)
+            (number)
+            (binary_expression
+                (identifier)
+                (operator)
+                (number)
+            )
+            (unary_expression (identifier))
+            (print (string_double_quoted))
+        )
+    )
+)
+
+==================
+While Loop
+==================
+
+[ Main;
+
+    while(i < 10)
+    {
+        print "hello";
+        i++;
+    }
+
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (while_loop
+            (binary_expression
+                (identifier)
+                (operator)
+                (number)
+            )
+            (print (string_double_quoted))
+            (increment (identifier))
+        )
+    )
+)
+
+
+
+==================
+Do Loop
+==================
+
+[ Main;
+
+   do
+   {
+       print "hello";
+       i++;
+   } until(i == 10);
+
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (do_loop
+            (print (string_double_quoted))
+            (increment (identifier))
+            (binary_expression
+                (identifier)
+                (operator)
+                (number)
+            )
+        )
+    )
+)
