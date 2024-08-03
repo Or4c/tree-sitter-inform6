@@ -12,7 +12,8 @@ module.exports = grammar({
       $.global,
       $.array,
       $.routine,
-      $.object
+      $.object,
+      $.attribute
     ),
 
     _statement: ($) => choice(
@@ -116,18 +117,27 @@ module.exports = grammar({
     global: ($) => seq("Global", $.identifier, optional(seq("=", $._expression)), ";"),
     array: ($) => seq("Array", $.identifier, choice("-->", "table"), $._expression, ";"),
     routine: ($) => seq("[", $.function_sig, repeat($._statement), "]", ";"),
+    attribute: ($) => seq("Attribute", $.identifier, ";"),
 
-    object: ($) => seq("Object", repeat('->'), optional($.identifier), optional($._string), optional($.identifier), optional(
-      repeat(
-        choice(
-          seq(choice("with", "private"), $._object_data, repeat(seq(",", $._object_data))),
-          seq(choice("has", "class"), repeat1($.identifier)),
-        ))), ";"),
+    object: ($) => seq(
+      choice("Object", "Class", $.identifier),
+      repeat('->'),
+      optional($.identifier),
+      optional($._string),
+      optional($.identifier),
+      optional(seq(
+        $._object_member,
+        repeat($._object_member))),
+      ";"),
 
     embedded_routine: ($) => seq('[;', repeat($._statement), ']'),
     _object_data: ($) => seq($.identifier, optional(choice($._data_list, $.embedded_routine))),
     _data_list: ($) => seq($._expression, repeat($._expression)),
 
+    _object_member: ($) => prec.right(choice(
+      seq(choice("with", "private"), $._object_data, repeat(seq(",", $._object_data))),
+      seq(choice("has", "class"), repeat1($.identifier)),
+    )),
 
     // Expression rules
     property_access: ($) => prec.left(4, seq($.identifier, '.', $.identifier)),

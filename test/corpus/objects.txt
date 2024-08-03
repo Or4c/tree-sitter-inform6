@@ -79,13 +79,15 @@ Object magpie "black-striped bird"
     with
         wingspan,
         worms_eaten
-    has animate light;
+    has animate light
+    class bird;
 
 -----
 (source_file
     (object
         (identifier)
         (string_double_quoted)
+        (identifier)
         (identifier)
         (identifier)
         (identifier)
