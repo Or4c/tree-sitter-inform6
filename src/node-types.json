@@ -194,10 +194,6 @@
           "named": true
         },
         {
-          "type": "move",
-          "named": true
-        },
-        {
           "type": "new_line",
           "named": true
         },
@@ -239,6 +235,10 @@
         },
         {
           "type": "string_single_quoted",
+          "named": true
+        },
+        {
+          "type": "tree_statement",
           "named": true
         },
         {
@@ -313,10 +313,6 @@
           "named": true
         },
         {
-          "type": "move",
-          "named": true
-        },
-        {
           "type": "new_line",
           "named": true
         },
@@ -358,6 +354,10 @@
         },
         {
           "type": "string_single_quoted",
+          "named": true
+        },
+        {
+          "type": "tree_statement",
           "named": true
         },
         {
@@ -490,10 +490,6 @@
           "named": true
         },
         {
-          "type": "move",
-          "named": true
-        },
-        {
           "type": "new_line",
           "named": true
         },
@@ -538,6 +534,10 @@
           "named": true
         },
         {
+          "type": "tree_statement",
+          "named": true
+        },
+        {
           "type": "unary_expression",
           "named": true
         },
@@ -554,7 +554,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "box",
@@ -585,15 +585,19 @@
           "named": true
         },
         {
+          "type": "function_sig",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "increment",
           "named": true
         },
         {
           "type": "local_var_decl",
-          "named": true
-        },
-        {
-          "type": "move",
           "named": true
         },
         {
@@ -609,6 +613,10 @@
           "named": true
         },
         {
+          "type": "property_access",
+          "named": true
+        },
+        {
           "type": "return",
           "named": true
         },
@@ -618,6 +626,10 @@
         },
         {
           "type": "spaces",
+          "named": true
+        },
+        {
+          "type": "tree_statement",
           "named": true
         },
         {
@@ -684,10 +696,6 @@
           "named": true
         },
         {
-          "type": "move",
-          "named": true
-        },
-        {
           "type": "new_line",
           "named": true
         },
@@ -729,6 +737,10 @@
         },
         {
           "type": "string_single_quoted",
+          "named": true
+        },
+        {
+          "type": "tree_statement",
           "named": true
         },
         {
@@ -867,21 +879,6 @@
     }
   },
   {
-    "type": "move",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "new_line",
     "named": true,
     "fields": {}
@@ -999,10 +996,6 @@
           "named": true
         },
         {
-          "type": "move",
-          "named": true
-        },
-        {
           "type": "new_line",
           "named": true
         },
@@ -1044,6 +1037,10 @@
         },
         {
           "type": "string_single_quoted",
+          "named": true
+        },
+        {
+          "type": "tree_statement",
           "named": true
         },
         {
@@ -1216,15 +1213,15 @@
           "named": true
         },
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "increment",
           "named": true
         },
         {
           "type": "local_var_decl",
-          "named": true
-        },
-        {
-          "type": "move",
           "named": true
         },
         {
@@ -1240,6 +1237,10 @@
           "named": true
         },
         {
+          "type": "property_access",
+          "named": true
+        },
+        {
           "type": "return",
           "named": true
         },
@@ -1249,6 +1250,10 @@
         },
         {
           "type": "spaces",
+          "named": true
+        },
+        {
+          "type": "tree_statement",
           "named": true
         },
         {
@@ -1264,7 +1269,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "binary_expression",
@@ -1417,6 +1422,21 @@
     "fields": {}
   },
   {
+    "type": "tree_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "unary_expression",
     "named": true,
     "fields": {},
@@ -1520,10 +1540,6 @@
           "named": true
         },
         {
-          "type": "move",
-          "named": true
-        },
-        {
           "type": "new_line",
           "named": true
         },
@@ -1565,6 +1581,10 @@
         },
         {
           "type": "string_single_quoted",
+          "named": true
+        },
+        {
+          "type": "tree_statement",
           "named": true
         },
         {
@@ -1647,6 +1667,10 @@
     "named": false
   },
   {
+    "type": "::",
+    "named": false
+  },
+  {
     "type": ";",
     "named": false
   },
@@ -1696,10 +1720,6 @@
   },
   {
     "type": "[",
-    "named": false
-  },
-  {
-    "type": "[;",
     "named": false
   },
   {
@@ -1788,6 +1808,10 @@
   },
   {
     "type": "provides",
+    "named": false
+  },
+  {
+    "type": "remove",
     "named": false
   },
   {

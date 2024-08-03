@@ -53,6 +53,7 @@ Object magpie "black-striped bird"
         (number)
         (identifier)
         (embedded_routine
+            (function_sig)
             (return
                 (binary_expression
                     (property_access
@@ -113,11 +114,35 @@ Object messages
             (identifier)
             (property_access
                 (identifier)
+                (identifier)
                 (routine_message
-                    (identifier)
                     (identifier)
                 )
             )
         )
+
+    )
+)
+
+
+==================
+Superclass messages
+==================
+
+[ Main;
+   self.Treasure::deposit();
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (property_access
+            (identifier)
+            (identifier)
+            (identifier))
+            (routine_message)
+
     )
 )

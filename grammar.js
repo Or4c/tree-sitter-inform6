@@ -17,20 +17,20 @@ module.exports = grammar({
     ),
 
     _statement: ($) => choice(
+      $._routine_statement,
+      $._loop,
       $.comment,
       $.print,
       $.new_line,
       $.spaces,
       $.box,
-      $._routine_message,
       $.local_var_decl,
       $.return,
       $.conditional,
-      $._loop,
       $.increment,
       $.decrement,
       $.break,
-      $.move
+      $.tree_statement
     ),
 
     _loop: ($) => choice(
@@ -45,7 +45,7 @@ module.exports = grammar({
       $._switch
     ),
 
-    _expression: ($) => choice(
+    _expression: ($) => prec.left(choice(
       $.identifier,
       $.property_access,
       $.number,
@@ -54,7 +54,7 @@ module.exports = grammar({
       $.binary_expression,
       $.unary_expression,
       $.rule_expression
-    ),
+    )),
 
 
     // Statement Rules
@@ -62,7 +62,7 @@ module.exports = grammar({
     spaces: ($) => seq("spaces", $.number, ";"),
     box: ($) => seq("box", $.string_double_quoted, optional(repeat(seq(',', $.string_double_quoted))), ";"),
     print: ($) => seq(choice("print", "print_ret"), repeat(seq($._expression, ",")), $._expression, ";"),
-    _routine_message: ($) => seq($.routine_message, ";"),
+    _routine_statement: ($) => seq(choice($.identifier, $.property_access), $.routine_message, ";"),
     local_var_decl: ($) => seq($.identifier, "=", $._expression, ";"),
     return: ($) => choice(
       seq("return", optional($._expression), ";"),
@@ -73,8 +73,13 @@ module.exports = grammar({
     increment: ($) => seq($.identifier, "++", ";"),
     decrement: ($) => seq($.identifier, "--", ";"),
     break: ($) => seq("break", ";"),
-    move: ($) => seq("move", $.identifier, "to", $.identifier, ";"),
-    routine_message: ($) => seq($.identifier, "(", repeat(seq($._expression, ",")), optional($._expression), ")"),
+
+    routine_message: ($) => prec.left(seq('(', repeat(seq($._expression, ",")), optional($._expression), ")")),
+
+    tree_statement: ($) => choice(
+      seq("move", $.identifier, "to", $.identifier, ";"),
+      seq("remove", $.identifier, ";"),
+    ),
 
     // Conditional Rules
     _if: ($) => prec.left(seq("if",
@@ -131,9 +136,9 @@ module.exports = grammar({
         repeat($._object_member))),
       ";"),
 
-    embedded_routine: ($) => seq('[;', repeat($._statement), ']'),
     _object_data: ($) => seq($.identifier, optional(choice($._data_list, $.embedded_routine))),
     _data_list: ($) => seq($._expression, repeat($._expression)),
+    embedded_routine: ($) => seq("[", $.function_sig, repeat($._statement), "]"),
 
     _object_member: ($) => prec.right(choice(
       seq(choice("with", "private"), $._object_data, repeat(seq(",", $._object_data))),
@@ -141,7 +146,14 @@ module.exports = grammar({
     )),
 
     // Expression rules
-    property_access: ($) => prec.left(4, seq($.identifier, '.', choice($.identifier, $.routine_message))),
+    property_access: ($) => prec.left(1,
+      seq(
+        choice($.identifier, seq($.identifier, $.routine_message)),
+        choice('.', '::'),
+        repeat(seq(choice($.identifier, seq($.identifier, $.routine_message)), choice('.', '::'))),
+        choice($.identifier, seq($.identifier, $.routine_message)))
+    ),
+
     binary_expression: ($) => prec.left(1, seq($._expression, prec(2, $.operator), $._expression)),
     unary_expression: ($) => prec.left(3, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
     rule_expression: ($) => seq('(', $.identifier, ')', $._expression),

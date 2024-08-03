@@ -11,7 +11,8 @@ Routine Message
 (source_file
     (routine
         (function_sig (identifier))
-        (routine_message (identifier))
+        (identifier)
+        (routine_message)
     )
 )
 
@@ -29,8 +30,10 @@ Routine Message with Args
 (source_file
     (routine
         (function_sig (identifier))
-        (routine_message (identifier) (number) (string_double_quoted) (string_double_quoted))
-        (routine_message (identifier) (number))
+        (identifier)
+        (routine_message (number) (string_double_quoted) (string_double_quoted))
+        (identifier)
+        (routine_message (number))
     )
 )
 
