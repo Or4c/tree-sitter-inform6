@@ -1,0 +1,40 @@
+==================
+Print intperpoliated string
+==================
+
+
+[ Main;
+    print "Hello", name,  " How are you^";
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (print
+            (string_double_quoted)
+            (identifier)
+            (string_double_quoted)
+        )
+    )
+)
+
+==================
+Print rule
+==================
+
+[ Main;
+    print (name) myObject;
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (print
+            (rule_expression (identifier) (identifier))
+        )
+    )
+)

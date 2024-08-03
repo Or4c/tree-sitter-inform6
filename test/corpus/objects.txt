@@ -1,0 +1,94 @@
+==================
+Simplest Object
+==================
+
+Object;
+
+-----
+(source_file
+    (object)
+)
+
+==================
+Object with props
+==================
+
+Object magpie "black-striped bird"
+    with wingspan, worms_eaten;
+
+-----
+(source_file
+    (object
+        (identifier)
+        (string_double_quoted)
+        (identifier)
+        (identifier)
+    )
+)
+
+==================
+Object with embedded routine and data list
+==================
+
+Object magpie "black-striped bird"
+    with name 'magpie' 'bird' 'black-striped' 'black' 'striped',
+    wingspan 5,
+    flying_strength [;
+        return magpie.wingspan + magpie.worms_eaten;
+    ],
+    worms_eaten;
+
+-----
+(source_file
+    (object
+        (identifier)
+        (string_double_quoted)
+        (identifier)
+        (string_single_quoted)
+        (string_single_quoted)
+        (string_single_quoted)
+        (string_single_quoted)
+        (string_single_quoted)
+        (identifier)
+        (number)
+        (identifier)
+        (embedded_routine
+            (return
+                (binary_expression
+                    (property_access
+                        (identifier)
+                        (identifier)
+                    )
+                    (operator)
+                    (property_access
+                        (identifier)
+                        (identifier)
+                    )
+                )
+            )
+        )
+        (identifier)
+    )
+)
+
+==================
+Object with attributes
+==================
+
+Object magpie "black-striped bird"
+    with
+        wingspan,
+        worms_eaten
+    has animate light;
+
+-----
+(source_file
+    (object
+        (identifier)
+        (string_double_quoted)
+        (identifier)
+        (identifier)
+        (identifier)
+        (identifier)
+    )
+)
