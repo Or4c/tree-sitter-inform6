@@ -22,7 +22,7 @@ module.exports = grammar({
       $.new_line,
       $.spaces,
       $.box,
-      $.routine_message,
+      $._routine_message,
       $.local_var_decl,
       $.return,
       $.conditional,
@@ -62,7 +62,7 @@ module.exports = grammar({
     spaces: ($) => seq("spaces", $.number, ";"),
     box: ($) => seq("box", $.string_double_quoted, optional(repeat(seq(',', $.string_double_quoted))), ";"),
     print: ($) => seq(choice("print", "print_ret"), repeat(seq($._expression, ",")), $._expression, ";"),
-    routine_message: ($) => seq($.identifier, "(", repeat(seq($._expression, ",")), optional($._expression), ")", ";"),
+    _routine_message: ($) => seq($.routine_message, ";"),
     local_var_decl: ($) => seq($.identifier, "=", $._expression, ";"),
     return: ($) => choice(
       seq("return", optional($._expression), ";"),
@@ -74,6 +74,7 @@ module.exports = grammar({
     decrement: ($) => seq($.identifier, "--", ";"),
     break: ($) => seq("break", ";"),
     move: ($) => seq("move", $.identifier, "to", $.identifier, ";"),
+    routine_message: ($) => seq($.identifier, "(", repeat(seq($._expression, ",")), optional($._expression), ")"),
 
     // Conditional Rules
     _if: ($) => prec.left(seq("if",
@@ -140,7 +141,7 @@ module.exports = grammar({
     )),
 
     // Expression rules
-    property_access: ($) => prec.left(4, seq($.identifier, '.', $.identifier)),
+    property_access: ($) => prec.left(4, seq($.identifier, '.', choice($.identifier, $.routine_message))),
     binary_expression: ($) => prec.left(1, seq($._expression, prec(2, $.operator), $._expression)),
     unary_expression: ($) => prec.left(3, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
     rule_expression: ($) => seq('(', $.identifier, ')', $._expression),
