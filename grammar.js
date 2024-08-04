@@ -14,7 +14,8 @@ module.exports = grammar({
       $.routine,
       $.object,
       $.attribute,
-      $.include
+      $.include,
+      $.grammar
     ),
 
     _statement: ($) => choice(
@@ -32,7 +33,8 @@ module.exports = grammar({
       $.decrement,
       $.break,
       $.tree_statement,
-      $.give
+      $.give,
+      $.action
     ),
 
     _loop: ($) => choice(
@@ -77,6 +79,10 @@ module.exports = grammar({
     decrement: ($) => seq($.identifier, "--", ";"),
     break: ($) => seq("break", ";"),
     give: ($) => seq("give", $.identifier, optional('~'), $.identifier, ";"),
+    action: ($) => choice(
+      seq("<", repeat1($.identifier), '>', ";"),
+      seq("<<", repeat1($.identifier), '>>', ";")
+    ),
 
     routine_message: ($) => prec.left(seq('(', repeat(seq($._expression, ",")), optional($._expression), ")")),
 
@@ -129,8 +135,22 @@ module.exports = grammar({
     routine: ($) => seq("[", $.function_sig, repeat($._statement), "]", ";"),
     attribute: ($) => seq("Attribute", $.identifier, ";"),
     include: ($) => seq("Include", $.string_double_quoted, ";"),
+    grammar: ($) => seq(choice("Verb", "Extend"), $.string_single_quoted, repeat($.string_single_quoted), repeat1($.grammar_clause), ";"),
 
-    // TODO: switch statements in embedded routines
+
+    grammar_clause: ($) => seq(
+      '*',
+      repeat(
+        choice(
+          $.string_single_quoted,
+          seq($.string_single_quoted, repeat1(seq('/', $.string_single_quoted))),
+          $.identifier,
+          seq(choice('noun', 'scope'), '=', $.identifier)
+        )
+      ),
+      '->',
+      $.identifier
+    ),
 
     object: ($) => seq(
       optional("Metaclass"),
@@ -146,8 +166,14 @@ module.exports = grammar({
 
     _object_data: ($) => seq($.identifier, optional(choice($._data_list, $.embedded_routine))),
     _data_list: ($) => seq($._expression, repeat($._expression)),
-    embedded_routine: ($) => seq("[", $.function_sig, repeat(seq(optional($.switch_block), $._statement)) , "]"),
-    switch_block: ($) => seq($.identifier, ":"),
+    embedded_routine: ($) => seq("[", $.function_sig, repeat(
+      choice(
+        seq($.switch_block, $._statement),
+        seq($.switch_block, ';'),
+        $._statement,
+      )
+    ), "]"),
+    switch_block: ($) => seq($.identifier, repeat(seq(',', $.identifier)), ":"),
 
     _object_member: ($) => prec.right(choice(
       seq(choice("with", "private"), $._object_data, repeat(seq(",", $._object_data))),
@@ -193,7 +219,7 @@ module.exports = grammar({
     nothing: ($) => "nothing",
     operator: ($) => choice('+', '-', '/', '*', '%', '<', '<=', '>=', '==', '~=', 'or', 'has', 'hasnt', '&&', '||', '~~', 'ofclass', 'provides'),
     boolean: ($) => choice("true", "false"),
-    identifier: ($) => /[a-zA-Z_]+[a-zA-Z0-9_]*/,
+    identifier: ($) => /(##)?[a-zA-Z_]+[a-zA-Z0-9_]*/,
     number: ($) => choice(/\d+/, /\$[0-9a-fA-F]+/, /\$\$(0|1)+/),
     string_single_quoted: ($) => seq("'", /[^\"\']*/, "'"),
     string_double_quoted: ($) => seq('"', /[^\"\']*/, '"')

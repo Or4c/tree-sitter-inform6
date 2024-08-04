@@ -24,7 +24,7 @@ If block
 ==================
 
 [ Main;
-    if (true) {
+    if (action == ##Take) {
         foo = 5;
         print "hello world";
     }
@@ -35,7 +35,11 @@ If block
     (routine
         (function_sig (identifier))
         (conditional
-            (boolean)
+            (binary_expression
+                (identifier)
+                (operator)
+                (identifier)
+            )
             (local_var_decl
                 (identifier)
                 (number)
@@ -184,6 +188,38 @@ Switch
                 (print
                     (string_double_quoted)
                 )
+            )
+        )
+    )
+)
+
+==================
+If block lt
+==================
+
+[ Main;
+    if (action <= ##Take) {
+        foo = 5;
+        print "hello world";
+    }
+];
+
+---
+(source_file
+    (routine
+        (function_sig (identifier))
+        (conditional
+            (binary_expression
+                (identifier)
+                (operator)
+                (identifier)
+            )
+            (local_var_decl
+                (identifier)
+                (number)
+            )
+            (print
+                (string_double_quoted)
             )
         )
     )

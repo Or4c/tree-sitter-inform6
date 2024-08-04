@@ -1,5 +1,20 @@
 [
   {
+    "type": "action",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "array",
     "named": true,
     "fields": {},
@@ -173,6 +188,10 @@
       "required": true,
       "types": [
         {
+          "type": "action",
+          "named": true
+        },
+        {
           "type": "array_access",
           "named": true
         },
@@ -295,6 +314,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "action",
+          "named": true
+        },
         {
           "type": "array_access",
           "named": true
@@ -489,6 +512,10 @@
       "required": true,
       "types": [
         {
+          "type": "action",
+          "named": true
+        },
+        {
           "type": "array_access",
           "named": true
         },
@@ -612,6 +639,10 @@
       "required": true,
       "types": [
         {
+          "type": "action",
+          "named": true
+        },
+        {
           "type": "box",
           "named": true
         },
@@ -710,6 +741,10 @@
       "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "action",
+          "named": true
+        },
         {
           "type": "array_access",
           "named": true
@@ -907,6 +942,44 @@
     }
   },
   {
+    "type": "grammar",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "grammar_clause",
+          "named": true
+        },
+        {
+          "type": "string_single_quoted",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "grammar_clause",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "string_single_quoted",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "include",
     "named": true,
     "fields": {},
@@ -1060,6 +1133,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "action",
+          "named": true
+        },
         {
           "type": "array_access",
           "named": true
@@ -1314,6 +1391,10 @@
       "required": true,
       "types": [
         {
+          "type": "action",
+          "named": true
+        },
+        {
           "type": "box",
           "named": true
         },
@@ -1480,6 +1561,10 @@
           "named": true
         },
         {
+          "type": "grammar",
+          "named": true
+        },
+        {
           "type": "include",
           "named": true
         },
@@ -1524,7 +1609,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
@@ -1608,6 +1693,10 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "action",
+          "named": true
+        },
         {
           "type": "array_access",
           "named": true
@@ -1812,6 +1901,10 @@
     "named": false
   },
   {
+    "type": "<<",
+    "named": false
+  },
+  {
     "type": "<=",
     "named": false
   },
@@ -1824,7 +1917,15 @@
     "named": false
   },
   {
+    "type": ">",
+    "named": false
+  },
+  {
     "type": ">=",
+    "named": false
+  },
+  {
+    "type": ">>",
     "named": false
   },
   {
@@ -1844,6 +1945,10 @@
     "named": false
   },
   {
+    "type": "Extend",
+    "named": false
+  },
+  {
     "type": "Global",
     "named": false
   },
@@ -1857,6 +1962,10 @@
   },
   {
     "type": "Object",
+    "named": false
+  },
+  {
+    "type": "Verb",
     "named": false
   },
   {
@@ -1932,6 +2041,10 @@
     "named": true
   },
   {
+    "type": "noun",
+    "named": false
+  },
+  {
     "type": "objectloop",
     "named": false
   },
@@ -1973,6 +2086,10 @@
   },
   {
     "type": "rtrue",
+    "named": false
+  },
+  {
+    "type": "scope",
     "named": false
   },
   {

@@ -1,0 +1,87 @@
+==================
+Grammar simple
+==================
+
+Verb 'eat' * held -> Eat;
+
+-----
+
+(source_file
+    (grammar
+        (string_single_quoted)
+        (grammar_clause
+            (identifier)
+            (identifier)
+        )
+    )
+)
+
+==================
+Grammar token options
+==================
+
+Verb 'yum' * 'eat'/'devour'/'guzzle' held -> Eat;
+
+-----
+
+(source_file
+    (grammar
+        (string_single_quoted)
+        (grammar_clause
+            (string_single_quoted)
+            (string_single_quoted)
+             (string_single_quoted)
+            (identifier)
+            (identifier)
+        )
+    )
+)
+
+
+==================
+Grammar token with routine
+==================
+
+Verb 'free' 'release' * noun=CagedCreature -> FreeAnimal;
+
+(source_file
+    (grammar
+        (string_single_quoted)
+        (string_single_quoted)
+        (grammar_clause
+            (identifier)
+            (identifier)
+        )
+    )
+)
+
+==================
+Grammar token with multiple clauses
+==================
+
+Verb 'use' 'employ' 'utilise'
+    * edible -> Eat
+    * clothing -> Wear
+    * enterable -> Enter;
+
+-----
+
+(source_file
+    (grammar
+        (string_single_quoted)
+        (string_single_quoted)
+        (string_single_quoted)
+        (grammar_clause
+            (identifier)
+            (identifier)
+        )
+        (grammar_clause
+            (identifier)
+            (identifier)
+        )
+        (grammar_clause
+            (identifier)
+            (identifier)
+        )
+    )
+)

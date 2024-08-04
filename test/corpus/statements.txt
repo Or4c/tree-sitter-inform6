@@ -76,3 +76,30 @@ Print with Interpolisation
         )
     )
 )
+
+==================
+actions
+==================
+
+[ Main;
+    <Take apple>;
+    <<Take apple>>;
+    rtrue;
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (action
+            (identifier)
+            (identifier)
+        )
+        (action
+            (identifier)
+            (identifier)
+        )
+        (return)
+    )
+)
