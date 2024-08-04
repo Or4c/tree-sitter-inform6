@@ -2,7 +2,7 @@
 
 This is a tree-sitter grammar for the [Inform 6 programming language](https://github.com/DavidKinder/Inform6).
 
-Inform 6 is copyright Graham Nelson and is released under the Artistic License 2.0.
+Inform 6 is copyright (c) Graham Nelson 1993 - 2024
 
 Website: [http://www.inform-fiction.org/](http://www.inform-fiction.org/)
 
