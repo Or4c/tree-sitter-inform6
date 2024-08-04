@@ -42,3 +42,28 @@ Array access
         )
     )
 )
+
+==================
+Array length
+==================
+
+[ Main;
+    print (number) object.#arr;
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (print
+            (identifier)
+            (property_access
+                (identifier)
+                (array_access
+                    (identifier)
+                )
+            )
+        )
+    )
+)

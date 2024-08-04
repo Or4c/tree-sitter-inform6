@@ -42,6 +42,10 @@
         {
           "type": "SYMBOL",
           "name": "attribute"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "include"
         }
       ]
     },
@@ -103,6 +107,10 @@
         {
           "type": "SYMBOL",
           "name": "tree_statement"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "give"
         }
       ]
     },
@@ -479,6 +487,39 @@
         {
           "type": "STRING",
           "value": "break"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "give": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "give"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "~"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
         },
         {
           "type": "STRING",
@@ -1201,6 +1242,23 @@
         }
       ]
     },
+    "include": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Include"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_double_quoted"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
     "object": {
       "type": "SEQ",
       "members": [
@@ -1421,13 +1479,43 @@
         {
           "type": "REPEAT",
           "content": {
-            "type": "SYMBOL",
-            "name": "_statement"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "switch_block"
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "_statement"
+              }
+            ]
           }
         },
         {
           "type": "STRING",
           "value": "]"
+        }
+      ]
+    },
+    "switch_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
         }
       ]
     },

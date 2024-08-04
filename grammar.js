@@ -13,7 +13,8 @@ module.exports = grammar({
       $.array,
       $.routine,
       $.object,
-      $.attribute
+      $.attribute,
+      $.include
     ),
 
     _statement: ($) => choice(
@@ -30,7 +31,8 @@ module.exports = grammar({
       $.increment,
       $.decrement,
       $.break,
-      $.tree_statement
+      $.tree_statement,
+      $.give
     ),
 
     _loop: ($) => choice(
@@ -74,6 +76,7 @@ module.exports = grammar({
     increment: ($) => seq($.identifier, "++", ";"),
     decrement: ($) => seq($.identifier, "--", ";"),
     break: ($) => seq("break", ";"),
+    give: ($) => seq("give", $.identifier, optional('~'), $.identifier, ";"),
 
     routine_message: ($) => prec.left(seq('(', repeat(seq($._expression, ",")), optional($._expression), ")")),
 
@@ -125,6 +128,9 @@ module.exports = grammar({
     array: ($) => seq("Array", $.identifier, choice("-->", "table"), $._expression, ";"),
     routine: ($) => seq("[", $.function_sig, repeat($._statement), "]", ";"),
     attribute: ($) => seq("Attribute", $.identifier, ";"),
+    include: ($) => seq("Include", $.string_double_quoted, ";"),
+
+    // TODO: switch statements in embedded routines
 
     object: ($) => seq(
       optional("Metaclass"),
@@ -140,7 +146,8 @@ module.exports = grammar({
 
     _object_data: ($) => seq($.identifier, optional(choice($._data_list, $.embedded_routine))),
     _data_list: ($) => seq($._expression, repeat($._expression)),
-    embedded_routine: ($) => seq("[", $.function_sig, repeat($._statement), "]"),
+    embedded_routine: ($) => seq("[", $.function_sig, repeat(seq(optional($.switch_block), $._statement)) , "]"),
+    switch_block: ($) => seq($.identifier, ":"),
 
     _object_member: ($) => prec.right(choice(
       seq(choice("with", "private"), $._object_data, repeat(seq(",", $._object_data))),

@@ -96,6 +96,46 @@ Object magpie "black-striped bird"
     )
 )
 
+==================
+Object with switch blocks in embedded_routine
+==================
+
+Object magpie "black-striped bird"
+    with
+        wingspan,
+        worms_eaten,
+        after [;
+            Take: "You pick the mushroom, neatly cleaving its thin stalk.";
+            Drop: "The mushroom drops to the ground, battered slightly.";
+        ]
+    has animate light
+    class bird;
+
+-----
+(source_file
+    (object
+        (identifier)
+        (string_double_quoted)
+        (identifier)
+        (identifier)
+        (identifier)
+        (embedded_routine
+            (function_sig)
+            (switch_block (identifier))
+            (return
+                (string_double_quoted)
+            )
+            (switch_block (identifier))
+            (return
+                (string_double_quoted)
+            )
+        )
+        (identifier)
+        (identifier)
+        (identifier)
+    )
+)
+
 
 ==================
 Object messages
