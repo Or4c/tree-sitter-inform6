@@ -54,6 +54,10 @@
         {
           "type": "SYMBOL",
           "name": "compiler_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "replace"
         }
       ]
     },
@@ -1361,6 +1365,65 @@
             "type": "SYMBOL",
             "name": "grammar_clause"
           }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "replace": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Replace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "compiler_message": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Message"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "error"
+                },
+                {
+                  "type": "STRING",
+                  "value": "warning"
+                },
+                {
+                  "type": "STRING",
+                  "value": "fatalerror"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "string_double_quoted"
         },
         {
           "type": "STRING",
