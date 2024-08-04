@@ -16,3 +16,29 @@ Array foo table 5;
         (number)
     )
 )
+
+==================
+Array access
+==================
+
+[ Main;
+    print (string) object.&arr-->0;
+];
+
+-----
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (print
+            (identifier)
+            (property_access
+                (identifier)
+                (array_access
+                    (identifier)
+                    (number)
+                )
+            )
+        )
+    )
+)

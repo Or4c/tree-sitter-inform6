@@ -48,12 +48,13 @@ module.exports = grammar({
     _expression: ($) => prec.left(choice(
       $.identifier,
       $.property_access,
+      $.array_access,
       $.number,
       $.boolean,
       $._string,
       $.binary_expression,
       $.unary_expression,
-      $.rule_expression
+      $.nothing
     )),
 
 
@@ -61,7 +62,7 @@ module.exports = grammar({
     new_line: ($) => seq("new_line", ";"),
     spaces: ($) => seq("spaces", $.number, ";"),
     box: ($) => seq("box", $.string_double_quoted, optional(repeat(seq(',', $.string_double_quoted))), ";"),
-    print: ($) => seq(choice("print", "print_ret"), repeat(seq($._expression, ",")), $._expression, ";"),
+    print: ($) => seq(choice("print", "print_ret"), optional(seq('(', $.identifier, ')')), repeat(seq($._expression, ",")), $._expression, ";"),
     _routine_statement: ($) => seq(choice($.identifier, $.property_access), $.routine_message, ";"),
     local_var_decl: ($) => seq($.identifier, "=", $._expression, ";"),
     return: ($) => choice(
@@ -126,7 +127,8 @@ module.exports = grammar({
     attribute: ($) => seq("Attribute", $.identifier, ";"),
 
     object: ($) => seq(
-      choice("Object", "Class", $.identifier),
+      optional("Metaclass"),
+      choice(seq("Object", optional($.identifier)), seq("Class", optional(seq('(', $.number, ')')), optional($.identifier))),
       repeat('->'),
       optional($.identifier),
       optional($._string),
@@ -148,15 +150,32 @@ module.exports = grammar({
     // Expression rules
     property_access: ($) => prec.left(1,
       seq(
-        choice($.identifier, seq($.identifier, $.routine_message)),
+        choice(
+          $.identifier,
+          seq(
+            $.identifier, $.routine_message)
+        ),
         choice('.', '::'),
-        repeat(seq(choice($.identifier, seq($.identifier, $.routine_message)), choice('.', '::'))),
-        choice($.identifier, seq($.identifier, $.routine_message)))
+        repeat(
+          seq(
+            choice(
+              $.identifier,
+              seq($.identifier, $.routine_message)),
+            choice('.', '::'))),
+        choice(
+          $.identifier,
+          $.array_access,
+          seq(
+            $.identifier, $.routine_message)))
+    ),
+
+    array_access: ($) => choice(
+      seq(optional('&'), $.identifier, '-->', $.number),
+      seq('#', $.identifier)
     ),
 
     binary_expression: ($) => prec.left(1, seq($._expression, prec(2, $.operator), $._expression)),
     unary_expression: ($) => prec.left(3, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
-    rule_expression: ($) => seq('(', $.identifier, ')', $._expression),
 
     _string: ($) => choice(
       $.string_single_quoted,
@@ -164,6 +183,7 @@ module.exports = grammar({
     ),
 
     // Literals
+    nothing: ($) => "nothing",
     operator: ($) => choice('+', '-', '/', '*', '%', '<', '<=', '>=', '==', '~=', 'or', 'has', 'hasnt', '&&', '||', '~~', 'ofclass', 'provides'),
     boolean: ($) => choice("true", "false"),
     identifier: ($) => /[a-zA-Z_]+[a-zA-Z0-9_]*/,

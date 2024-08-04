@@ -34,7 +34,8 @@ Print rule
     (routine
         (function_sig (identifier))
         (print
-            (rule_expression (identifier) (identifier))
+            (identifier)
+            (identifier)
         )
     )
 )
