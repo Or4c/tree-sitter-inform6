@@ -15,7 +15,8 @@ module.exports = grammar({
       $.object,
       $.attribute,
       $.include,
-      $.grammar
+      $.grammar,
+      $.compiler_directive
     ),
 
     _statement: ($) => choice(
@@ -34,7 +35,8 @@ module.exports = grammar({
       $.break,
       $.tree_statement,
       $.give,
-      $.action
+      $.action,
+      $.compiler_directive
     ),
 
     _loop: ($) => choice(
@@ -136,6 +138,10 @@ module.exports = grammar({
     attribute: ($) => seq("Attribute", $.identifier, ";"),
     include: ($) => seq("Include", $.string_double_quoted, ";"),
     grammar: ($) => seq(choice("Verb", "Extend"), $.string_single_quoted, repeat($.string_single_quoted), repeat1($.grammar_clause), ";"),
+
+    compiler_directive: ($) => seq("#", choice(
+      "ifdef", "ifndef", "iftrue", "iffalse", "ifnot", "Endif",
+    ), optional($._expression), ";"),
 
 
     grammar_clause: ($) => seq(

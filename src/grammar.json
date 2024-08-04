@@ -50,6 +50,10 @@
         {
           "type": "SYMBOL",
           "name": "grammar"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "compiler_directive"
         }
       ]
     },
@@ -119,6 +123,10 @@
         {
           "type": "SYMBOL",
           "name": "action"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "compiler_directive"
         }
       ]
     },
@@ -1353,6 +1361,60 @@
             "type": "SYMBOL",
             "name": "grammar_clause"
           }
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "compiler_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "#"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "ifdef"
+            },
+            {
+              "type": "STRING",
+              "value": "ifndef"
+            },
+            {
+              "type": "STRING",
+              "value": "iftrue"
+            },
+            {
+              "type": "STRING",
+              "value": "iffalse"
+            },
+            {
+              "type": "STRING",
+              "value": "ifnot"
+            },
+            {
+              "type": "STRING",
+              "value": "Endif"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_expression"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
         },
         {
           "type": "STRING",
