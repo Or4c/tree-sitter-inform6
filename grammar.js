@@ -1,5 +1,5 @@
 module.exports = grammar({
-  name: "Inform6",
+  name: "inform6",
   rules: {
 
     source_file: ($) => repeat($._directive),
