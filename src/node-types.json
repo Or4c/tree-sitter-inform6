@@ -280,7 +280,7 @@
           "named": true
         },
         {
-          "type": "routine_message",
+          "type": "routine_statement",
           "named": true
         },
         {
@@ -466,7 +466,7 @@
           "named": true
         },
         {
-          "type": "routine_message",
+          "type": "routine_statement",
           "named": true
         },
         {
@@ -663,7 +663,7 @@
           "named": true
         },
         {
-          "type": "routine_message",
+          "type": "routine_statement",
           "named": true
         },
         {
@@ -746,10 +746,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "increment",
           "named": true
         },
@@ -770,15 +766,11 @@
           "named": true
         },
         {
-          "type": "property_access",
-          "named": true
-        },
-        {
           "type": "return",
           "named": true
         },
         {
-          "type": "routine_message",
+          "type": "routine_statement",
           "named": true
         },
         {
@@ -901,7 +893,7 @@
           "named": true
         },
         {
-          "type": "routine_message",
+          "type": "routine_statement",
           "named": true
         },
         {
@@ -1308,7 +1300,7 @@
           "named": true
         },
         {
-          "type": "routine_message",
+          "type": "routine_statement",
           "named": true
         },
         {
@@ -1587,10 +1579,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "increment",
           "named": true
         },
@@ -1611,15 +1599,11 @@
           "named": true
         },
         {
-          "type": "property_access",
-          "named": true
-        },
-        {
           "type": "return",
           "named": true
         },
         {
-          "type": "routine_message",
+          "type": "routine_statement",
           "named": true
         },
         {
@@ -1683,6 +1667,29 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "routine_statement",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_message",
           "named": true
         }
       ]
@@ -2009,7 +2016,7 @@
           "named": true
         },
         {
-          "type": "routine_message",
+          "type": "routine_statement",
           "named": true
         },
         {

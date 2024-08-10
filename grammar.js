@@ -23,7 +23,7 @@ module.exports = grammar({
     ),
 
     _statement: ($) => choice(
-      $._routine_statement,
+      $.routine_statement,
       $._loop,
       $.comment,
       $.print,
@@ -72,7 +72,7 @@ module.exports = grammar({
     spaces: ($) => seq("spaces", $.number, ";"),
     box: ($) => seq("box", $.string_double_quoted, optional(repeat(seq(',', $.string_double_quoted))), ";"),
     print: ($) => seq(choice("print", "print_ret"), optional(seq('(', $.identifier, ')')), repeat(seq($._expression, ",")), $._expression, ";"),
-    _routine_statement: ($) => seq(choice($.identifier, $.property_access), $.routine_message, ";"),
+    routine_statement: ($) => seq(choice($.identifier, $.property_access), $.routine_message, ";"),
     local_var_decl: ($) => seq($.identifier, "=", $._expression, ";"),
     return: ($) => choice(
       seq("return", optional($._expression), ";"),

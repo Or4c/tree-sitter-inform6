@@ -194,11 +194,12 @@ Superclass messages
 (source_file
     (routine
         (function_sig (identifier))
-        (property_access
-            (identifier)
-            (identifier)
-            (identifier))
-            (routine_message)
-
+        (routine_statement
+            (property_access
+                (identifier)
+                (identifier)
+                (identifier))
+                (routine_message)
+        )
     )
 )

@@ -74,7 +74,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_routine_statement"
+          "name": "routine_statement"
         },
         {
           "type": "SYMBOL",
@@ -359,7 +359,7 @@
         }
       ]
     },
-    "_routine_statement": {
+    "routine_statement": {
       "type": "SEQ",
       "members": [
         {
