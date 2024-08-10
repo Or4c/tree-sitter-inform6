@@ -166,7 +166,9 @@ module.exports = grammar({
 
     object: ($) => seq(
       optional("Metaclass"),
-      choice(seq("Object", optional($.identifier)), seq("Class", optional(seq('(', $.number, ')')), optional($.identifier))),
+      choice(
+        seq(field('class_name', $.identifier), optional($.identifier)),
+        seq(field('class_name', $.identifier), optional(seq('(', $.number, ')')), optional($.identifier))),
       repeat('->'),
       optional($.identifier),
       optional($._string),

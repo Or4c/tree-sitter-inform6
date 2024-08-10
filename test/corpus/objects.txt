@@ -6,7 +6,9 @@ Object;
 
 -----
 (source_file
-    (object)
+    (object
+        class_name: (identifier)
+    )
 )
 
 ==================
@@ -19,6 +21,7 @@ Object magpie "black-striped bird"
 -----
 (source_file
     (object
+        class_name: (identifier)
         (identifier)
         (string_double_quoted)
         (identifier)
@@ -41,6 +44,7 @@ Object magpie "black-striped bird"
 -----
 (source_file
     (object
+        class_name: (identifier)
         (identifier)
         (string_double_quoted)
         (identifier)
@@ -86,6 +90,7 @@ Object magpie "black-striped bird"
 -----
 (source_file
     (object
+        class_name: (identifier)
         (identifier)
         (string_double_quoted)
         (identifier)
@@ -116,6 +121,7 @@ Object magpie "black-striped bird"
 -----
 (source_file
     (object
+        class_name: (identifier)
         (identifier)
         (string_double_quoted)
         (identifier)

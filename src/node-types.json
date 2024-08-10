@@ -1144,7 +1144,18 @@
   {
     "type": "object",
     "named": true,
-    "fields": {},
+    "fields": {
+      "class_name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
     "children": {
       "multiple": true,
       "required": false,
@@ -2153,10 +2164,6 @@
     "named": false
   },
   {
-    "type": "Class",
-    "named": false
-  },
-  {
     "type": "Constant",
     "named": false
   },
@@ -2182,10 +2189,6 @@
   },
   {
     "type": "Metaclass",
-    "named": false
-  },
-  {
-    "type": "Object",
     "named": false
   },
   {

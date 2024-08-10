@@ -1641,8 +1641,12 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "Object"
+                  "type": "FIELD",
+                  "name": "class_name",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
                 },
                 {
                   "type": "CHOICE",
@@ -1662,8 +1666,12 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "Class"
+                  "type": "FIELD",
+                  "name": "class_name",
+                  "content": {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  }
                 },
                 {
                   "type": "CHOICE",
