@@ -2303,6 +2303,10 @@
     "named": false
   },
   {
+    "type": "in",
+    "named": false
+  },
+  {
     "type": "move",
     "named": false
   },
@@ -2313,6 +2317,10 @@
   {
     "type": "nothing",
     "named": true
+  },
+  {
+    "type": "notin",
+    "named": false
   },
   {
     "type": "noun",

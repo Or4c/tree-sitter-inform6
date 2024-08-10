@@ -231,7 +231,7 @@ module.exports = grammar({
 
     // Literals
     nothing: ($) => "nothing",
-    operator: ($) => choice('+', '-', '/', '*', '%', '<', '<=', '>=', '==', '~=', 'or', 'has', 'hasnt', '&&', '||', '~~', 'ofclass', 'provides'),
+    operator: ($) => choice('+', '-', '/', '*', '%', '<', '<=', '>=', '==', '~=', 'or', 'has', 'hasnt', '&&', '||', '~~', 'ofclass', 'provides', 'in', 'notin'),
     boolean: ($) => choice("true", "false"),
     identifier: ($) => /(##)?[a-zA-Z_]+[a-zA-Z0-9_]*/,
     number: ($) => choice(/\d+/, /\$[0-9a-fA-F]+/, /\$\$(0|1)+/),

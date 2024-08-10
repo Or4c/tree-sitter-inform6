@@ -2322,6 +2322,14 @@
         {
           "type": "STRING",
           "value": "provides"
+        },
+        {
+          "type": "STRING",
+          "value": "in"
+        },
+        {
+          "type": "STRING",
+          "value": "notin"
         }
       ]
     },
