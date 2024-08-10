@@ -1146,6 +1146,126 @@
             "named": true
           }
         ]
+      },
+      "object_data": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "embedded_routine",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "nothing",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "property_access",
+            "named": true
+          },
+          {
+            "type": "string_double_quoted",
+            "named": true
+          },
+          {
+            "type": "string_single_quoted",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "object_member": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": ",",
+            "named": false
+          },
+          {
+            "type": "array_access",
+            "named": true
+          },
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "boolean",
+            "named": true
+          },
+          {
+            "type": "class",
+            "named": false
+          },
+          {
+            "type": "embedded_routine",
+            "named": true
+          },
+          {
+            "type": "has",
+            "named": false
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "nothing",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "private",
+            "named": false
+          },
+          {
+            "type": "property_access",
+            "named": true
+          },
+          {
+            "type": "string_double_quoted",
+            "named": true
+          },
+          {
+            "type": "string_single_quoted",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          },
+          {
+            "type": "with",
+            "named": false
+          }
+        ]
       }
     },
     "children": {
@@ -1153,35 +1273,11 @@
       "required": false,
       "types": [
         {
-          "type": "array_access",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "embedded_routine",
-          "named": true
-        },
-        {
           "type": "identifier",
           "named": true
         },
         {
-          "type": "nothing",
-          "named": true
-        },
-        {
           "type": "number",
-          "named": true
-        },
-        {
-          "type": "property_access",
           "named": true
         },
         {
@@ -1190,10 +1286,6 @@
         },
         {
           "type": "string_single_quoted",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
           "named": true
         }
       ]
