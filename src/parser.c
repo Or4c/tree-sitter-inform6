@@ -15,9 +15,9 @@
 #define LANGUAGE_VERSION 14
 #define STATE_COUNT 1302
 #define LARGE_STATE_COUNT 2
-#define SYMBOL_COUNT 174
+#define SYMBOL_COUNT 175
 #define ALIAS_COUNT 0
-#define TOKEN_COUNT 100
+#define TOKEN_COUNT 101
 #define EXTERNAL_TOKEN_COUNT 0
 #define FIELD_COUNT 1
 #define MAX_ALIAS_SEQUENCE_LENGTH 13
@@ -123,80 +123,81 @@ enum ts_symbol_identifiers {
   anon_sym_SQUOTE = 97,
   aux_sym_string_single_quoted_token1 = 98,
   anon_sym_DQUOTE = 99,
-  sym_source_file = 100,
-  sym__directive = 101,
-  sym__statement = 102,
-  sym__loop = 103,
-  sym_conditional = 104,
-  sym__expression = 105,
-  sym_new_line = 106,
-  sym_spaces = 107,
-  sym_box = 108,
-  sym_print = 109,
-  sym__routine_statement = 110,
-  sym_local_var_decl = 111,
-  sym_return = 112,
-  sym_increment = 113,
-  sym_decrement = 114,
-  sym_break = 115,
-  sym_give = 116,
-  sym_action = 117,
-  sym_routine_message = 118,
-  sym_tree_statement = 119,
-  sym__if = 120,
-  sym__switch = 121,
-  sym_case = 122,
-  sym_for_loop = 123,
-  sym_while_loop = 124,
-  sym_do_loop = 125,
-  sym_object_loop = 126,
-  sym_function_sig = 127,
-  sym_constant = 128,
-  sym_serial = 129,
-  sym_release = 130,
-  sym_global = 131,
-  sym_array = 132,
-  sym_routine = 133,
-  sym_attribute = 134,
-  sym_include = 135,
-  sym_grammar = 136,
-  sym_replace = 137,
-  sym_compiler_directive = 138,
-  sym_grammar_clause = 139,
-  sym_object = 140,
-  sym__object_data = 141,
-  sym__data_list = 142,
-  sym_embedded_routine = 143,
-  sym_switch_block = 144,
-  sym__object_member = 145,
-  sym_property_access = 146,
-  sym_array_access = 147,
-  sym_binary_expression = 148,
-  sym_unary_expression = 149,
-  sym__string = 150,
-  sym_operator = 151,
-  sym_boolean = 152,
-  sym_number = 153,
-  sym_string_single_quoted = 154,
-  sym_string_double_quoted = 155,
-  aux_sym_source_file_repeat1 = 156,
-  aux_sym_box_repeat1 = 157,
-  aux_sym_print_repeat1 = 158,
-  aux_sym_action_repeat1 = 159,
-  aux_sym__if_repeat1 = 160,
-  aux_sym__switch_repeat1 = 161,
-  aux_sym_case_repeat1 = 162,
-  aux_sym_grammar_repeat1 = 163,
-  aux_sym_grammar_repeat2 = 164,
-  aux_sym_grammar_clause_repeat1 = 165,
-  aux_sym_grammar_clause_repeat2 = 166,
-  aux_sym_object_repeat1 = 167,
-  aux_sym_object_repeat2 = 168,
-  aux_sym__data_list_repeat1 = 169,
-  aux_sym_embedded_routine_repeat1 = 170,
-  aux_sym_switch_block_repeat1 = 171,
-  aux_sym__object_member_repeat1 = 172,
-  aux_sym_property_access_repeat1 = 173,
+  aux_sym_string_double_quoted_token1 = 100,
+  sym_source_file = 101,
+  sym__directive = 102,
+  sym__statement = 103,
+  sym__loop = 104,
+  sym_conditional = 105,
+  sym__expression = 106,
+  sym_new_line = 107,
+  sym_spaces = 108,
+  sym_box = 109,
+  sym_print = 110,
+  sym__routine_statement = 111,
+  sym_local_var_decl = 112,
+  sym_return = 113,
+  sym_increment = 114,
+  sym_decrement = 115,
+  sym_break = 116,
+  sym_give = 117,
+  sym_action = 118,
+  sym_routine_message = 119,
+  sym_tree_statement = 120,
+  sym__if = 121,
+  sym__switch = 122,
+  sym_case = 123,
+  sym_for_loop = 124,
+  sym_while_loop = 125,
+  sym_do_loop = 126,
+  sym_object_loop = 127,
+  sym_function_sig = 128,
+  sym_constant = 129,
+  sym_serial = 130,
+  sym_release = 131,
+  sym_global = 132,
+  sym_array = 133,
+  sym_routine = 134,
+  sym_attribute = 135,
+  sym_include = 136,
+  sym_grammar = 137,
+  sym_replace = 138,
+  sym_compiler_directive = 139,
+  sym_grammar_clause = 140,
+  sym_object = 141,
+  sym__object_data = 142,
+  sym__data_list = 143,
+  sym_embedded_routine = 144,
+  sym_switch_block = 145,
+  sym__object_member = 146,
+  sym_property_access = 147,
+  sym_array_access = 148,
+  sym_binary_expression = 149,
+  sym_unary_expression = 150,
+  sym__string = 151,
+  sym_operator = 152,
+  sym_boolean = 153,
+  sym_number = 154,
+  sym_string_single_quoted = 155,
+  sym_string_double_quoted = 156,
+  aux_sym_source_file_repeat1 = 157,
+  aux_sym_box_repeat1 = 158,
+  aux_sym_print_repeat1 = 159,
+  aux_sym_action_repeat1 = 160,
+  aux_sym__if_repeat1 = 161,
+  aux_sym__switch_repeat1 = 162,
+  aux_sym_case_repeat1 = 163,
+  aux_sym_grammar_repeat1 = 164,
+  aux_sym_grammar_repeat2 = 165,
+  aux_sym_grammar_clause_repeat1 = 166,
+  aux_sym_grammar_clause_repeat2 = 167,
+  aux_sym_object_repeat1 = 168,
+  aux_sym_object_repeat2 = 169,
+  aux_sym__data_list_repeat1 = 170,
+  aux_sym_embedded_routine_repeat1 = 171,
+  aux_sym_switch_block_repeat1 = 172,
+  aux_sym__object_member_repeat1 = 173,
+  aux_sym_property_access_repeat1 = 174,
 };
 
 static const char * const ts_symbol_names[] = {
@@ -300,6 +301,7 @@ static const char * const ts_symbol_names[] = {
   [anon_sym_SQUOTE] = "'",
   [aux_sym_string_single_quoted_token1] = "string_single_quoted_token1",
   [anon_sym_DQUOTE] = "\"",
+  [aux_sym_string_double_quoted_token1] = "string_double_quoted_token1",
   [sym_source_file] = "source_file",
   [sym__directive] = "_directive",
   [sym__statement] = "_statement",
@@ -477,6 +479,7 @@ static const TSSymbol ts_symbol_map[] = {
   [anon_sym_SQUOTE] = anon_sym_SQUOTE,
   [aux_sym_string_single_quoted_token1] = aux_sym_string_single_quoted_token1,
   [anon_sym_DQUOTE] = anon_sym_DQUOTE,
+  [aux_sym_string_double_quoted_token1] = aux_sym_string_double_quoted_token1,
   [sym_source_file] = sym_source_file,
   [sym__directive] = sym__directive,
   [sym__statement] = sym__statement,
@@ -952,6 +955,10 @@ static const TSSymbolMetadata ts_symbol_metadata[] = {
   },
   [anon_sym_DQUOTE] = {
     .visible = true,
+    .named = false,
+  },
+  [aux_sym_string_double_quoted_token1] = {
+    .visible = false,
     .named = false,
   },
   [sym_source_file] = {
@@ -5920,17 +5927,27 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (('\t' <= lookahead && lookahead <= '\r') ||
           lookahead == ' ') ADVANCE(589);
       if (lookahead != 0 &&
-          lookahead != '"' &&
           lookahead != '\'') ADVANCE(590);
       END_STATE();
     case 590:
       ACCEPT_TOKEN(aux_sym_string_single_quoted_token1);
       if (lookahead != 0 &&
-          lookahead != '"' &&
           lookahead != '\'') ADVANCE(590);
       END_STATE();
     case 591:
       ACCEPT_TOKEN(anon_sym_DQUOTE);
+      END_STATE();
+    case 592:
+      ACCEPT_TOKEN(aux_sym_string_double_quoted_token1);
+      if (('\t' <= lookahead && lookahead <= '\r') ||
+          lookahead == ' ') ADVANCE(592);
+      if (lookahead != 0 &&
+          lookahead != '"') ADVANCE(593);
+      END_STATE();
+    case 593:
+      ACCEPT_TOKEN(aux_sym_string_double_quoted_token1);
+      if (lookahead != 0 &&
+          lookahead != '"') ADVANCE(593);
       END_STATE();
     default:
       return false;
@@ -7029,7 +7046,7 @@ static const TSLexMode ts_lex_modes[STATE_COUNT] = {
   [1088] = {.lex_state = 0},
   [1089] = {.lex_state = 0},
   [1090] = {.lex_state = 589},
-  [1091] = {.lex_state = 589},
+  [1091] = {.lex_state = 592},
   [1092] = {.lex_state = 0},
   [1093] = {.lex_state = 10},
   [1094] = {.lex_state = 0},
@@ -7063,7 +7080,7 @@ static const TSLexMode ts_lex_modes[STATE_COUNT] = {
   [1122] = {.lex_state = 0},
   [1123] = {.lex_state = 10},
   [1124] = {.lex_state = 10},
-  [1125] = {.lex_state = 589},
+  [1125] = {.lex_state = 592},
   [1126] = {.lex_state = 0},
   [1127] = {.lex_state = 0},
   [1128] = {.lex_state = 0},
@@ -7205,7 +7222,7 @@ static const TSLexMode ts_lex_modes[STATE_COUNT] = {
   [1264] = {.lex_state = 0},
   [1265] = {.lex_state = 10},
   [1266] = {.lex_state = 0},
-  [1267] = {.lex_state = 589},
+  [1267] = {.lex_state = 592},
   [1268] = {.lex_state = 0},
   [1269] = {.lex_state = 0},
   [1270] = {.lex_state = 0},
@@ -43457,7 +43474,7 @@ static const uint16_t ts_small_parse_table[] = {
       aux_sym_string_single_quoted_token1,
   [45809] = 1,
     ACTIONS(2721), 1,
-      aux_sym_string_single_quoted_token1,
+      aux_sym_string_double_quoted_token1,
   [45813] = 1,
     ACTIONS(2723), 1,
       anon_sym_SEMI,
@@ -43559,7 +43576,7 @@ static const uint16_t ts_small_parse_table[] = {
       sym_identifier,
   [45945] = 1,
     ACTIONS(2785), 1,
-      aux_sym_string_single_quoted_token1,
+      aux_sym_string_double_quoted_token1,
   [45949] = 1,
     ACTIONS(2787), 1,
       anon_sym_SEMI,
@@ -43985,7 +44002,7 @@ static const uint16_t ts_small_parse_table[] = {
       anon_sym_SEMI,
   [46513] = 1,
     ACTIONS(3053), 1,
-      aux_sym_string_single_quoted_token1,
+      aux_sym_string_double_quoted_token1,
   [46517] = 1,
     ACTIONS(3055), 1,
       anon_sym_LPAREN,

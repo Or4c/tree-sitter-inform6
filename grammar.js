@@ -235,7 +235,7 @@ module.exports = grammar({
     boolean: ($) => choice("true", "false"),
     identifier: ($) => /(##)?[a-zA-Z_]+[a-zA-Z0-9_]*/,
     number: ($) => choice(/\d+/, /\$[0-9a-fA-F]+/, /\$\$(0|1)+/),
-    string_single_quoted: ($) => seq("'", /[^\"\']*/, "'"),
-    string_double_quoted: ($) => seq('"', /[^\"\']*/, '"')
+    string_single_quoted: ($) => seq("'", /[^\']*/, "'"),
+    string_double_quoted: ($) => seq('"', /[^\"]*/, '"')
   },
 });
