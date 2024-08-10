@@ -58,6 +58,14 @@
         {
           "type": "SYMBOL",
           "name": "replace"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "serial"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "release"
         }
       ]
     },
@@ -1178,8 +1186,16 @@
               "type": "SEQ",
               "members": [
                 {
-                  "type": "STRING",
-                  "value": "="
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "STRING",
+                      "value": "="
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
                 },
                 {
                   "type": "SYMBOL",
@@ -1191,6 +1207,40 @@
               "type": "BLANK"
             }
           ]
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "serial": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Serial"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
+        },
+        {
+          "type": "STRING",
+          "value": ";"
+        }
+      ]
+    },
+    "release": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "Release"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_expression"
         },
         {
           "type": "STRING",

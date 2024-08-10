@@ -1407,6 +1407,57 @@
     }
   },
   {
+    "type": "release",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "array_access",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nothing",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "string_double_quoted",
+          "named": true
+        },
+        {
+          "type": "string_single_quoted",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "replace",
     "named": true,
     "fields": {},
@@ -1627,6 +1678,57 @@
     }
   },
   {
+    "type": "serial",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "array_access",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nothing",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "string_double_quoted",
+          "named": true
+        },
+        {
+          "type": "string_single_quoted",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "source_file",
     "named": true,
     "fields": {},
@@ -1671,11 +1773,19 @@
           "named": true
         },
         {
+          "type": "release",
+          "named": true
+        },
+        {
           "type": "replace",
           "named": true
         },
         {
           "type": "routine",
+          "named": true
+        },
+        {
+          "type": "serial",
           "named": true
         }
       ]
@@ -2079,7 +2189,15 @@
     "named": false
   },
   {
+    "type": "Release",
+    "named": false
+  },
+  {
     "type": "Replace",
+    "named": false
+  },
+  {
+    "type": "Serial",
     "named": false
   },
   {

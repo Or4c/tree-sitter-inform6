@@ -16,3 +16,31 @@ Constant FOO;
         (identifier)
     )
 )
+
+==================
+Constant multiple values
+==================
+
+Constant Headline
+    "^The Interactive Original^
+      By Will Crowther (1976) and Don Woods (1977)^
+      Reconstructed in three steps by:^
+      Donald Ekman, David M. Baggett (1993) and Graham Nelson (1994)^
+      [In memoriam Stephen Bishop (1820?-1857): GN]^^";
+Serial "060321";
+Release 9;
+
+-----
+
+(source_file
+    (constant
+        (identifier)
+        (string_double_quoted)
+    )
+    (serial
+        (string_double_quoted)
+    )
+    (release
+        (number)
+    )
+)

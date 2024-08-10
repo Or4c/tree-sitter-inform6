@@ -17,7 +17,9 @@ module.exports = grammar({
       $.include,
       $.grammar,
       $.compiler_directive,
-      $.replace
+      $.replace,
+      $.serial,
+      $.release
     ),
 
     _statement: ($) => choice(
@@ -132,7 +134,9 @@ module.exports = grammar({
     function_sig: ($) => choice(";", seq(repeat1($.identifier), ";")),
 
     // Directive Rules
-    constant: ($) => seq("Constant", $.identifier, optional(seq("=", $._expression)), ";"),
+    constant: ($) => seq("Constant", $.identifier, optional(seq(optional("="), $._expression)), ";"),
+    serial: ($) => seq("Serial", $._expression, ";"),
+    release: ($) => seq("Release", $._expression, ";"),
     global: ($) => seq("Global", $.identifier, optional(seq("=", $._expression)), ";"),
     array: ($) => seq("Array", $.identifier, choice("-->", "table"), $._expression, ";"),
     routine: ($) => seq("[", $.function_sig, repeat($._statement), "]", ";"),
