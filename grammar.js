@@ -178,7 +178,10 @@ module.exports = grammar({
         repeat($._object_member))),
       ";"),
 
-    _object_data: ($) => seq(field('data_id', $.identifier), optional(choice($._data_list, $.embedded_routine))),
+    _object_data: ($) => choice(
+      seq(field('data_id', $.identifier), optional(choice($._data_list, $.embedded_routine))),
+      seq($.attr_mod, repeat1($.identifier)),
+    ),
     _data_list: ($) => seq($._expression, repeat($._expression)),
     embedded_routine: ($) => seq("[", $.function_sig, repeat(
       choice(
@@ -189,10 +192,10 @@ module.exports = grammar({
     ), "]"),
     switch_block: ($) => seq($.identifier, repeat(seq(',', $.identifier)), ":"),
 
-    _object_member: ($) => prec.right(choice(
-      seq($.prop_mod, field('object_data', $._object_data), repeat(seq(",", field('object_data', $._object_data)))),
+    _object_member: ($) => choice(
+      seq($.prop_mod, $._object_data, repeat(seq(",", $._object_data))),
       seq($.attr_mod, repeat1($.identifier)),
-    )),
+    ),
 
     prop_mod: ($) => choice("with", "private"),
     attr_mod: ($) => choice("has", "class"),

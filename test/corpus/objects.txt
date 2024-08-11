@@ -31,6 +31,33 @@ Object magpie "black-striped bird"
 )
 
 ==================
+Has parsing
+==================
+
+Scenic  -> "~Y2~ rock"
+  with  name 'rock' 'y2',
+        description "There is a large ~Y2~ painted on the rock.",
+  has   supporter;
+
+-----
+
+(source_file
+    (object
+        class_name: (identifier)
+        (string_double_quoted)
+        (prop_mod)
+        data_id: (identifier)
+        (string_single_quoted)
+        (string_single_quoted)
+        data_id: (identifier)
+        (string_double_quoted)
+        (attr_mod)
+        (identifier)
+    )
+)
+
+
+==================
 Object with embedded routine and data list
 ==================
 
@@ -50,15 +77,15 @@ Object magpie "black-striped bird"
         (string_double_quoted)
         (prop_mod)
         data_id: (identifier)
-        object_data: (string_single_quoted)
-        object_data: (string_single_quoted)
-        object_data: (string_single_quoted)
-        object_data: (string_single_quoted)
-        object_data: (string_single_quoted)
+        (string_single_quoted)
+        (string_single_quoted)
+        (string_single_quoted)
+        (string_single_quoted)
+        (string_single_quoted)
         data_id: (identifier)
-        object_data: (number)
+        (number)
         data_id: (identifier)
-        object_data: (embedded_routine
+        (embedded_routine
             (function_sig)
             (return
                 (binary_expression
@@ -133,7 +160,7 @@ Object magpie "black-striped bird"
         data_id: (identifier)
         data_id: (identifier)
         data_id: (identifier)
-        object_data: (embedded_routine
+        (embedded_routine
             (function_sig)
             (switch_block (identifier))
             (return
