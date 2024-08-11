@@ -217,10 +217,6 @@
           {
             "type": "SYMBOL",
             "name": "nothing"
-          },
-          {
-            "type": "SYMBOL",
-            "name": "self"
           }
         ]
       }
@@ -2310,10 +2306,6 @@
         },
         {
           "type": "SYMBOL",
-          "name": "self"
-        },
-        {
-          "type": "SYMBOL",
           "name": "identifier"
         },
         {
@@ -2342,10 +2334,6 @@
     "nothing": {
       "type": "STRING",
       "value": "nothing"
-    },
-    "self": {
-      "type": "STRING",
-      "value": "self"
     },
     "operator": {
       "type": "CHOICE",
