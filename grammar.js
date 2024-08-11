@@ -67,7 +67,8 @@ module.exports = grammar({
       $._string,
       $.binary_expression,
       $.unary_expression,
-      $.nothing
+      $.nothing,
+      $.self
     )),
 
 
@@ -244,6 +245,7 @@ module.exports = grammar({
       $.string_double_quoted,
       $.boolean,
       $.nothing,
+      $.self,
       $.identifier,
       $.property_access,
       seq($.number, 'to', $.number)
@@ -251,6 +253,7 @@ module.exports = grammar({
 
     // Literals
     nothing: ($) => "nothing",
+    self: ($) => "self",
     operator: ($) => choice('+', '-', '/', '*', '%', '<', '<=', '>=', '==', '~=', 'or', 'has', 'hasnt', '&&', '||', '~~', 'ofclass', 'provides', 'in', 'notin'),
     boolean: ($) => choice("true", "false"),
     identifier: ($) => /(##)?[a-zA-Z_]+[a-zA-Z0-9_]*/,

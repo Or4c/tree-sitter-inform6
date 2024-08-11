@@ -51,6 +51,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -142,6 +146,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -316,6 +324,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -439,6 +451,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "spaces",
           "named": true
         },
@@ -499,6 +515,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -633,6 +653,10 @@
         },
         {
           "type": "routine_statement",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -866,6 +890,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "spaces",
           "named": true
         },
@@ -956,6 +984,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -1078,6 +1110,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -1169,6 +1205,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -1291,6 +1331,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "spaces",
           "named": true
         },
@@ -1356,6 +1400,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -1438,6 +1486,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -1501,6 +1553,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -1650,6 +1706,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -1721,6 +1781,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -1870,6 +1934,10 @@
           "named": true
         },
         {
+          "type": "self",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         }
@@ -1925,6 +1993,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -2044,6 +2116,10 @@
         },
         {
           "type": "routine_statement",
+          "named": true
+        },
+        {
+          "type": "self",
           "named": true
         },
         {
@@ -2400,6 +2476,10 @@
   {
     "type": "scope",
     "named": false
+  },
+  {
+    "type": "self",
+    "named": true
   },
   {
     "type": "spaces",
