@@ -1,7 +1,11 @@
 module.exports = grammar({
   name: "inform6",
-  rules: {
 
+  conflicts: ($) => [
+    [$.case, $.case],
+  ],
+
+  rules: {
     source_file: ($) => repeat($._directive),
 
     word: $ => $.identifier,
@@ -73,7 +77,7 @@ module.exports = grammar({
     box: ($) => seq("box", $.string_double_quoted, optional(repeat(seq(',', $.string_double_quoted))), ";"),
     print: ($) => seq(choice("print", "print_ret"), optional(seq('(', $.identifier, ')')), repeat(seq($._expression, ",")), $._expression, ";"),
     routine_statement: ($) => seq(choice($.identifier, $.property_access), $.routine_message, ";"),
-    local_var_decl: ($) => seq($.identifier, "=", $._expression, ";"),
+    local_var_decl: ($) => seq(prec.left(20, seq($.identifier, '=')), $._expression, ";"),
     return: ($) => choice(
       seq("return", optional($._expression), ";"),
       seq("rtrue", ";"),
@@ -116,7 +120,7 @@ module.exports = grammar({
       "}"
     ),
 
-    case: ($) => seq($._expression, repeat(seq(",", $._expression)), ":", $._statement),
+    case: ($) => seq($.switch_value, repeat(seq(',', $.switch_value)), ':', repeat1($._statement)),
 
     // Loop Rules
     for_loop: ($) => seq(
@@ -233,6 +237,16 @@ module.exports = grammar({
     _string: ($) => choice(
       $.string_single_quoted,
       $.string_double_quoted
+    ),
+
+    switch_value: ($) => choice(
+      $.number,
+      $.string_double_quoted,
+      $.boolean,
+      $.nothing,
+      $.identifier,
+      $.property_access,
+      seq($.number, 'to', $.number)
     ),
 
     // Literals

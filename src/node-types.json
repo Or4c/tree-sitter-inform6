@@ -197,18 +197,6 @@
           "named": true
         },
         {
-          "type": "array_access",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
           "type": "box",
           "named": true
         },
@@ -245,10 +233,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "increment",
           "named": true
         },
@@ -261,23 +245,11 @@
           "named": true
         },
         {
-          "type": "nothing",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
           "type": "object_loop",
           "named": true
         },
         {
           "type": "print",
-          "named": true
-        },
-        {
-          "type": "property_access",
           "named": true
         },
         {
@@ -293,19 +265,11 @@
           "named": true
         },
         {
-          "type": "string_double_quoted",
-          "named": true
-        },
-        {
-          "type": "string_single_quoted",
+          "type": "switch_value",
           "named": true
         },
         {
           "type": "tree_statement",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
           "named": true
         },
         {
@@ -1872,6 +1836,41 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "switch_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nothing",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "string_double_quoted",
           "named": true
         }
       ]

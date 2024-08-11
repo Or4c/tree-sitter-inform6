@@ -152,7 +152,7 @@ Switch
    switch(birds_eaten) {
         0: print "sad";
         1, 2, 3: print "not bad!";
-        4: print "the best";
+        VAR: print "the best";
         default: print "same same";
    }
 ];
@@ -164,27 +164,39 @@ Switch
         (conditional
             (identifier)
             (case
-                (number)
+                (switch_value
+                    (number)
+                )
                 (print
                     (string_double_quoted)
                 )
             )
             (case
-                (number)
-                (number)
-                (number)
+                (switch_value
+                    (number)
+                )
+                (switch_value
+                    (number)
+                )
+                (switch_value
+                    (number)
+                )
                 (print
                     (string_double_quoted)
                 )
             )
             (case
-                (number)
+                (switch_value
+                    (identifier)
+                )
                 (print
                     (string_double_quoted)
                 )
             )
             (case
-                (identifier)
+                (switch_value
+                    (identifier)
+                )
                 (print
                     (string_double_quoted)
                 )
@@ -192,6 +204,55 @@ Switch
         )
     )
 )
+
+==================
+Switch with multiple statements per block
+==================
+
+[ Main;
+   switch(birds_eaten) {
+    0:
+        print "sad";
+        foo = 5;
+    1 to 3:
+        print "not bad!";
+        print "sad";
+   }
+];
+
+------------------
+
+(source_file
+    (routine
+        (function_sig (identifier))
+        (conditional
+            (identifier)
+            (case
+                (switch_value
+                    (number)
+                )
+                (print (string_double_quoted))
+                (local_var_decl
+                    (identifier)
+                    (number)
+                )
+            )
+            (case
+                 (switch_value
+                    (number)
+                    (number)
+                )
+                (print
+                    (string_double_quoted)
+                )
+               (print
+                    (string_double_quoted)
+                )
+            )
+        )
+    )
+)
+
 
 ==================
 If block lt

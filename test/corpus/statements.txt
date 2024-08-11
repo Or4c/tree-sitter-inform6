@@ -110,3 +110,22 @@ actions
         (return)
     )
 )
+
+==================
+Give
+==================
+
+[ Main;
+    give PlantStickingUp ~absent;
+];
+
+-----
+(source_file
+    (routine
+        (function_sig (identifier))
+        (give
+            (identifier)
+            (identifier)
+        )
+    )
+)
