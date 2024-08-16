@@ -16,16 +16,18 @@ For Loop
 (source_file
     (routine
         (function_sig (identifier))
-        (for_loop
-            (identifier)
-            (number)
-            (binary_expression
+        (function_block
+            (for_loop
                 (identifier)
-                (operator)
                 (number)
+                (binary_expression
+                    (identifier)
+                    (operator)
+                    (number)
+                )
+                (unary_expression (identifier))
+                (print (string_double_quoted))
             )
-            (unary_expression (identifier))
-            (print (string_double_quoted))
         )
     )
 )
@@ -49,14 +51,16 @@ While Loop
 (source_file
     (routine
         (function_sig (identifier))
-        (while_loop
-            (binary_expression
-                (identifier)
-                (operator)
-                (number)
+        (function_block
+            (while_loop
+                (binary_expression
+                    (identifier)
+                    (operator)
+                    (number)
+                )
+                (print (string_double_quoted))
+                (increment (identifier))
             )
-            (print (string_double_quoted))
-            (increment (identifier))
         )
     )
 )
@@ -82,13 +86,15 @@ Do Loop
 (source_file
     (routine
         (function_sig (identifier))
-        (do_loop
-            (print (string_double_quoted))
-            (increment (identifier))
-            (binary_expression
-                (identifier)
-                (operator)
-                (number)
+        (function_block
+            (do_loop
+                (print (string_double_quoted))
+                (increment (identifier))
+                (binary_expression
+                    (identifier)
+                    (operator)
+                    (number)
+                )
             )
         )
     )

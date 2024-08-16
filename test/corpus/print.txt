@@ -12,10 +12,12 @@ Print intperpoliated string
 (source_file
     (routine
         (function_sig (identifier))
-        (print
-            (string_double_quoted)
-            (identifier)
-            (string_double_quoted)
+        (function_block
+            (print
+                (string_double_quoted)
+                (identifier)
+                (string_double_quoted)
+            )
         )
     )
 )
@@ -33,9 +35,11 @@ Print rule
 (source_file
     (routine
         (function_sig (identifier))
-        (print
-            (identifier)
-            (identifier)
+        (function_block
+            (print
+                (identifier)
+                (identifier)
+            )
         )
     )
 )

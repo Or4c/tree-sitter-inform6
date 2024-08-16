@@ -11,9 +11,11 @@ Routine Message
 (source_file
     (routine
         (function_sig (identifier))
-        (routine_statement
-            (identifier)
-            (routine_message)
+        (function_block
+            (routine_statement
+                (identifier)
+                (routine_message)
+            )
         )
     )
 )
@@ -32,14 +34,15 @@ Routine Message with Args
 (source_file
     (routine
         (function_sig (identifier))
-
-        (routine_statement
-            (identifier)
-            (routine_message (number) (string_double_quoted) (string_double_quoted))
-        )
-        (routine_statement
-            (identifier)
-            (routine_message (number))
+        (function_block
+            (routine_statement
+                (identifier)
+                (routine_message (number) (string_double_quoted) (string_double_quoted))
+            )
+            (routine_statement
+                (identifier)
+                (routine_message (number))
+            )
         )
     )
 )
@@ -58,8 +61,10 @@ Local Vars
 (source_file
     (routine
         (function_sig (identifier))
-        (local_var_decl (identifier) (string_double_quoted))
-        (print (identifier))
+        (function_block
+            (local_var_decl (identifier) (string_double_quoted))
+            (print (identifier))
+        )
     )
 )
 
@@ -76,10 +81,12 @@ Print with Interpolisation
 (source_file
     (routine
         (function_sig (identifier))
-        (print
-            (string_double_quoted)
-            (identifier)
-            (string_double_quoted)
+        (function_block
+            (print
+                (string_double_quoted)
+                (identifier)
+                (string_double_quoted)
+            )
         )
     )
 )
@@ -99,15 +106,17 @@ actions
 (source_file
     (routine
         (function_sig (identifier))
-        (action
-            (identifier)
-            (identifier)
+        (function_block
+            (action
+                (identifier)
+                (identifier)
+            )
+            (action
+                (identifier)
+                (identifier)
+            )
+            (return)
         )
-        (action
-            (identifier)
-            (identifier)
-        )
-        (return)
     )
 )
 
@@ -123,9 +132,11 @@ Give
 (source_file
     (routine
         (function_sig (identifier))
-        (give
-            (identifier)
-            (identifier)
+        (function_block
+            (give
+                (identifier)
+                (identifier)
+            )
         )
     )
 )

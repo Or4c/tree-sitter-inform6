@@ -30,13 +30,15 @@ Array access
 (source_file
     (routine
         (function_sig (identifier))
-        (print
-            (identifier)
-            (property_access
+        (function_block
+            (print
                 (identifier)
-                (array_access
+                (property_access
                     (identifier)
-                    (number)
+                    (array_access
+                        (identifier)
+                        (number)
+                    )
                 )
             )
         )
@@ -56,12 +58,14 @@ Array length
 (source_file
     (routine
         (function_sig (identifier))
-        (print
-            (identifier)
-            (property_access
+        (function_block
+            (print
                 (identifier)
-                (array_access
+                (property_access
                     (identifier)
+                    (array_access
+                        (identifier)
+                    )
                 )
             )
         )

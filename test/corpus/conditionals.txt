@@ -10,10 +10,12 @@ If single statement
 (source_file
     (routine
         (function_sig (identifier))
-        (conditional
-            (boolean)
-            (print
-                (string_double_quoted)
+        (function_block
+            (conditional
+                (boolean)
+                (print
+                    (string_double_quoted)
+                )
             )
         )
     )
@@ -34,18 +36,20 @@ If block
 (source_file
     (routine
         (function_sig (identifier))
-        (conditional
-            (binary_expression
-                (identifier)
-                (operator)
-                (identifier)
-            )
-            (local_var_decl
-                (identifier)
-                (number)
-            )
-            (print
-                (string_double_quoted)
+        (function_block
+            (conditional
+                (binary_expression
+                    (identifier)
+                    (operator)
+                    (identifier)
+                )
+                (local_var_decl
+                    (identifier)
+                    (number)
+                )
+                (print
+                    (string_double_quoted)
+                )
             )
         )
     )
@@ -63,15 +67,17 @@ If else single statement
 (source_file
     (routine
         (function_sig (identifier))
-        (conditional
-            (boolean)
-            (print
-                (string_double_quoted)
+        (function_block
+                (conditional
+                    (boolean)
+                    (print
+                        (string_double_quoted)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
+                )
             )
-            (print
-                (string_double_quoted)
-            )
-        )
     )
 )
 
@@ -93,21 +99,23 @@ If else block
 (source_file
     (routine
         (function_sig (identifier))
-        (conditional
-            (boolean)
-            (local_var_decl
-                (identifier)
-                (number)
-            )
-            (print
-                (string_double_quoted)
-            )
-            (local_var_decl
-                (identifier)
-                (number)
-            )
-            (print
-                (string_double_quoted)
+        (function_block
+            (conditional
+                (boolean)
+                (local_var_decl
+                    (identifier)
+                    (number)
+                )
+                (print
+                    (string_double_quoted)
+                )
+                (local_var_decl
+                    (identifier)
+                    (number)
+                )
+                (print
+                    (string_double_quoted)
+                )
             )
         )
     )
@@ -128,17 +136,19 @@ If else mixed block
 (source_file
     (routine
         (function_sig (identifier))
-        (conditional
-            (boolean)
-            (local_var_decl
-                (identifier)
-                (number)
-            )
-            (print
-                (string_double_quoted)
-            )
-            (print
-                (string_double_quoted)
+        (function_block
+            (conditional
+                (boolean)
+                (local_var_decl
+                    (identifier)
+                    (number)
+                )
+                (print
+                    (string_double_quoted)
+                )
+                (print
+                    (string_double_quoted)
+                )
             )
         )
     )
@@ -161,44 +171,46 @@ Switch
 (source_file
     (routine
         (function_sig (identifier))
-        (conditional
-            (identifier)
-            (case
-                (switch_value
-                    (number)
+        (function_block
+            (conditional
+                (identifier)
+                (case
+                    (switch_value
+                        (number)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
-                (print
-                    (string_double_quoted)
+                (case
+                    (switch_value
+                        (number)
+                    )
+                    (switch_value
+                        (number)
+                    )
+                    (switch_value
+                        (number)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
-            )
-            (case
-                (switch_value
-                    (number)
+                (case
+                    (switch_value
+                        (identifier)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
-                (switch_value
-                    (number)
-                )
-                (switch_value
-                    (number)
-                )
-                (print
-                    (string_double_quoted)
-                )
-            )
-            (case
-                (switch_value
-                    (identifier)
-                )
-                (print
-                    (string_double_quoted)
-                )
-            )
-            (case
-                (switch_value
-                    (identifier)
-                )
-                (print
-                    (string_double_quoted)
+                (case
+                    (switch_value
+                        (identifier)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
             )
         )
@@ -225,28 +237,30 @@ Switch with multiple statements per block
 (source_file
     (routine
         (function_sig (identifier))
-        (conditional
-            (identifier)
-            (case
-                (switch_value
-                    (number)
+        (function_block
+            (conditional
+                (identifier)
+                (case
+                    (switch_value
+                        (number)
+                    )
+                    (print (string_double_quoted))
+                    (local_var_decl
+                        (identifier)
+                        (number)
+                    )
                 )
-                (print (string_double_quoted))
-                (local_var_decl
-                    (identifier)
-                    (number)
-                )
-            )
-            (case
-                 (switch_value
-                    (number)
-                    (number)
-                )
+                (case
+                    (switch_value
+                        (number)
+                        (number)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 (print
-                    (string_double_quoted)
-                )
-               (print
-                    (string_double_quoted)
+                        (string_double_quoted)
+                    )
                 )
             )
         )
@@ -269,18 +283,20 @@ If block lt
 (source_file
     (routine
         (function_sig (identifier))
-        (conditional
-            (binary_expression
-                (identifier)
-                (operator)
-                (identifier)
-            )
-            (local_var_decl
-                (identifier)
-                (number)
-            )
-            (print
-                (string_double_quoted)
+        (function_block
+            (conditional
+                (binary_expression
+                    (identifier)
+                    (operator)
+                    (identifier)
+                )
+                (local_var_decl
+                    (identifier)
+                    (number)
+                )
+                (print
+                    (string_double_quoted)
+                )
             )
         )
     )

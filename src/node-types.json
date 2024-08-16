@@ -893,6 +893,97 @@
     }
   },
   {
+    "type": "function_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "action",
+          "named": true
+        },
+        {
+          "type": "box",
+          "named": true
+        },
+        {
+          "type": "break",
+          "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "compiler_directive",
+          "named": true
+        },
+        {
+          "type": "conditional",
+          "named": true
+        },
+        {
+          "type": "decrement",
+          "named": true
+        },
+        {
+          "type": "do_loop",
+          "named": true
+        },
+        {
+          "type": "for_loop",
+          "named": true
+        },
+        {
+          "type": "give",
+          "named": true
+        },
+        {
+          "type": "increment",
+          "named": true
+        },
+        {
+          "type": "local_var_decl",
+          "named": true
+        },
+        {
+          "type": "new_line",
+          "named": true
+        },
+        {
+          "type": "object_loop",
+          "named": true
+        },
+        {
+          "type": "print",
+          "named": true
+        },
+        {
+          "type": "return",
+          "named": true
+        },
+        {
+          "type": "routine_statement",
+          "named": true
+        },
+        {
+          "type": "spaces",
+          "named": true
+        },
+        {
+          "type": "tree_statement",
+          "named": true
+        },
+        {
+          "type": "while_loop",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "function_sig",
     "named": true,
     "fields": {},
@@ -1527,87 +1618,11 @@
       "required": true,
       "types": [
         {
-          "type": "action",
-          "named": true
-        },
-        {
-          "type": "box",
-          "named": true
-        },
-        {
-          "type": "break",
-          "named": true
-        },
-        {
-          "type": "comment",
-          "named": true
-        },
-        {
-          "type": "compiler_directive",
-          "named": true
-        },
-        {
-          "type": "conditional",
-          "named": true
-        },
-        {
-          "type": "decrement",
-          "named": true
-        },
-        {
-          "type": "do_loop",
-          "named": true
-        },
-        {
-          "type": "for_loop",
+          "type": "function_block",
           "named": true
         },
         {
           "type": "function_sig",
-          "named": true
-        },
-        {
-          "type": "give",
-          "named": true
-        },
-        {
-          "type": "increment",
-          "named": true
-        },
-        {
-          "type": "local_var_decl",
-          "named": true
-        },
-        {
-          "type": "new_line",
-          "named": true
-        },
-        {
-          "type": "object_loop",
-          "named": true
-        },
-        {
-          "type": "print",
-          "named": true
-        },
-        {
-          "type": "return",
-          "named": true
-        },
-        {
-          "type": "routine_statement",
-          "named": true
-        },
-        {
-          "type": "spaces",
-          "named": true
-        },
-        {
-          "type": "tree_statement",
-          "named": true
-        },
-        {
-          "type": "while_loop",
           "named": true
         }
       ]

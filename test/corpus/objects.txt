@@ -201,17 +201,18 @@ Object messages
 (source_file
     (routine
         (function_sig (identifier))
-        (local_var_decl
-            (identifier)
-            (property_access
+        (function_block
+            (local_var_decl
                 (identifier)
-                (identifier)
-                (routine_message
+                (property_access
                     (identifier)
+                    (identifier)
+                    (routine_message
+                        (identifier)
+                    )
                 )
             )
         )
-
     )
 )
 
@@ -229,12 +230,15 @@ Superclass messages
 (source_file
     (routine
         (function_sig (identifier))
-        (routine_statement
-            (property_access
-                (identifier)
-                (identifier)
-                (identifier))
+        (function_block
+            (routine_statement
+                (property_access
+                    (identifier)
+                    (identifier)
+                    (identifier)
+                )
                 (routine_message)
+            )
         )
     )
 )
