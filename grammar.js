@@ -60,6 +60,8 @@ module.exports = grammar({
     ),
 
     _expression: ($) => prec.left(choice(
+      $.cast,
+      prec(50, seq('(', $._expression, ')')),
       $.identifier,
       $.property_access,
       $.array_access,
@@ -105,7 +107,7 @@ module.exports = grammar({
 
 
     // Conditional Rules
-    _if: ($) => prec.left(seq("if",
+    _if: ($) => prec.left(10, seq("if",
       "(", $._expression, ")",
       choice(
         $.code_block,
@@ -236,13 +238,9 @@ module.exports = grammar({
       seq('#', $.identifier)
     ),
 
+    cast: ($) => prec(100, seq('(', $.identifier, ')', $._expression)),
     routine_call: ($) => seq(choice($.identifier, $.property_access), $.routine_message),
-
-    binary_expression: ($) => choice(
-      prec(2, seq($._expression, $.operator, $._expression)),
-      prec(3, seq('(', $._expression, $.operator, $._expression, ')'))
-    ),
-
+    binary_expression: ($) => prec(2, seq($._expression, $.operator, $._expression)),
     unary_expression: ($) => prec.left(4, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
 
     _string: ($) => choice(

@@ -32,13 +32,15 @@ Array access
         (function_sig (identifier))
         (function_block
             (print
-                (identifier)
+               (cast
+               (identifier)
                 (property_access
                     (identifier)
                     (array_access
                         (identifier)
                         (number)
                     )
+                )
                 )
             )
         )
@@ -60,11 +62,13 @@ Array length
         (function_sig (identifier))
         (function_block
             (print
-                (identifier)
-                (property_access
+                (cast
                     (identifier)
-                    (array_access
+                    (property_access
                         (identifier)
+                        (array_access
+                            (identifier)
+                        )
                     )
                 )
             )

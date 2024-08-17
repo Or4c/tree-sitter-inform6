@@ -36,10 +36,12 @@ Print rule
     (routine
         (function_sig (identifier))
         (function_block
-            (print
-                (identifier)
-                (identifier)
-            )
+                (print
+                    (cast
+                        (identifier)
+                        (identifier)
+                    )
+                )
         )
     )
 )
