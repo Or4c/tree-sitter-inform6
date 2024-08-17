@@ -117,8 +117,6 @@ module.exports = grammar({
       )
     )),
 
-    switch_block: ($) => seq("{", repeat($.case), "}"),
-
     _switch: ($) => seq("switch", "(", $._expression, ")", "{",
       repeat($.case),
       "}"
