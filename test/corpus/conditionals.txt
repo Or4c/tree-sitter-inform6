@@ -43,12 +43,14 @@ If block
                     (operator)
                     (identifier)
                 )
-                (local_var_decl
-                    (identifier)
-                    (number)
-                )
-                (print
-                    (string_double_quoted)
+                (code_block
+                    (local_var_decl
+                        (identifier)
+                        (number)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
             )
         )
@@ -102,19 +104,23 @@ If else block
         (function_block
             (conditional
                 (boolean)
-                (local_var_decl
-                    (identifier)
-                    (number)
+                (code_block
+                    (local_var_decl
+                        (identifier)
+                        (number)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
-                (print
-                    (string_double_quoted)
-                )
-                (local_var_decl
-                    (identifier)
-                    (number)
-                )
-                (print
-                    (string_double_quoted)
+                (code_block
+                    (local_var_decl
+                        (identifier)
+                        (number)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
             )
         )
@@ -139,12 +145,14 @@ If else mixed block
         (function_block
             (conditional
                 (boolean)
-                (local_var_decl
-                    (identifier)
-                    (number)
-                )
-                (print
-                    (string_double_quoted)
+                (code_block
+                    (local_var_decl
+                        (identifier)
+                        (number)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
                 (print
                     (string_double_quoted)
@@ -290,12 +298,14 @@ If block lt
                     (operator)
                     (identifier)
                 )
-                (local_var_decl
-                    (identifier)
-                    (number)
-                )
-                (print
-                    (string_double_quoted)
+                (code_block
+                    (local_var_decl
+                        (identifier)
+                        (number)
+                    )
+                    (print
+                        (string_double_quoted)
+                    )
                 )
             )
         )

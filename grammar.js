@@ -100,20 +100,24 @@ module.exports = grammar({
       seq("remove", $.identifier, ";"),
     ),
 
+
+
     // Conditional Rules
     _if: ($) => prec.left(seq("if",
       "(", $._expression, ")",
       choice(
-        seq("{", repeat($._statement), "}"),
-        seq($._statement)
+        $.code_block,
+        $._statement
       ),
       optional(
         choice(
           seq("else", $._statement),
-          seq("else", "{", repeat($._statement), "}")
+          seq("else", $.code_block)
         )
       )
     )),
+
+    switch_block: ($) => seq("{", repeat($.case), "}"),
 
     _switch: ($) => seq("switch", "(", $._expression, ")", "{",
       repeat($.case),
@@ -125,18 +129,18 @@ module.exports = grammar({
     // Loop Rules
     for_loop: ($) => seq(
       'for', '(', optional(seq($.identifier, '=', $._expression)), ':', optional($._expression), ':', optional($._expression), ')',
-      choice($._statement, seq('{', repeat($._statement), '}')
-      )),
+      choice($._statement, $.code_block)),
     while_loop: ($) => seq(
-      'while', '(', $._expression, ')', choice($._statement, seq('{', repeat($._statement), '}'))
+      'while', '(', $._expression, ')', choice($._statement, $.code_block)
     ),
-    do_loop: ($) => seq('do', choice($._statement, seq('{', repeat($._statement), '}')), 'until', '(', $._expression, ')', ';'),
-    object_loop: ($) => seq('objectloop', '(', $._expression, ')', choice($._statement, seq('{', repeat($._statement), '}'))),
+    do_loop: ($) => seq('do', choice($._statement, $.code_block), 'until', '(', $._expression, ')', ';'),
+    object_loop: ($) => seq('objectloop', '(', $._expression, ')', choice($._statement, $.code_block)),
 
     // Misc Rules
     comment: ($) => /!.*\n/,
     function_sig: ($) => choice(";", seq(repeat1($.identifier), ";")),
     function_block: ($) => repeat1($._statement),
+    code_block: ($) => seq("{", repeat($._statement), "}"),
 
     // Directive Rules
     constant: ($) => seq("Constant", $.identifier, optional(seq(optional("="), $._expression)), ";"),

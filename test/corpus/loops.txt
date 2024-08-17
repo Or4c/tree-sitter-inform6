@@ -26,7 +26,9 @@ For Loop
                     (number)
                 )
                 (unary_expression (identifier))
-                (print (string_double_quoted))
+                (code_block
+                    (print (string_double_quoted))
+                )
             )
         )
     )
@@ -58,8 +60,10 @@ While Loop
                     (operator)
                     (number)
                 )
-                (print (string_double_quoted))
-                (increment (identifier))
+                (code_block
+                    (print (string_double_quoted))
+                    (increment (identifier))
+                )
             )
         )
     )
@@ -88,8 +92,10 @@ Do Loop
         (function_sig (identifier))
         (function_block
             (do_loop
-                (print (string_double_quoted))
-                (increment (identifier))
+                (code_block
+                    (print (string_double_quoted))
+                    (increment (identifier))
+                )
                 (binary_expression
                     (identifier)
                     (operator)
