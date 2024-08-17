@@ -164,9 +164,9 @@ module.exports = grammar({
 
     replace: ($) => seq("Replace", $.identifier, ";"),
     compiler_message: ($) => seq("Message", optional(choice("error", "warning", "fatalerror")), $.string_double_quoted, ";"),
-    compiler_directive: ($) => seq("#", choice(
-      "ifdef", "ifndef", "iftrue", "iffalse", "ifnot", "Endif",
-    ), optional($._expression), ";"),
+    compiler_directive: ($) => seq(
+      choice('#Ifdef', '#Ifndef', '#Iftrue', '#Iffalse', '#Ifnot', '#Endif'),
+      optional($._expression), ";"),
 
 
     grammar_clause: ($) => seq(

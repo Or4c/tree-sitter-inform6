@@ -1483,35 +1483,31 @@
       "type": "SEQ",
       "members": [
         {
-          "type": "STRING",
-          "value": "#"
-        },
-        {
           "type": "CHOICE",
           "members": [
             {
               "type": "STRING",
-              "value": "ifdef"
+              "value": "#Ifdef"
             },
             {
               "type": "STRING",
-              "value": "ifndef"
+              "value": "#Ifndef"
             },
             {
               "type": "STRING",
-              "value": "iftrue"
+              "value": "#Iftrue"
             },
             {
               "type": "STRING",
-              "value": "iffalse"
+              "value": "#Iffalse"
             },
             {
               "type": "STRING",
-              "value": "ifnot"
+              "value": "#Ifnot"
             },
             {
               "type": "STRING",
-              "value": "Endif"
+              "value": "#Endif"
             }
           ]
         },

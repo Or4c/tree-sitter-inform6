@@ -1,0 +1,22 @@
+=======================
+Compiler definitions
+======================
+
+#Ifdef DEBUG;
+#Ifndef DEBUG;
+#Iftrue DEBUG;
+#Iffalse DEBUG;
+#Endif;
+
+----
+  (source_file
+    (compiler_directive
+        (identifier))
+    (compiler_directive
+        (identifier))
+    (compiler_directive
+        (identifier))
+    (compiler_directive
+        (identifier))
+    (compiler_directive)
+)

@@ -2439,6 +2439,30 @@
     "named": false
   },
   {
+    "type": "#Endif",
+    "named": false
+  },
+  {
+    "type": "#Ifdef",
+    "named": false
+  },
+  {
+    "type": "#Iffalse",
+    "named": false
+  },
+  {
+    "type": "#Ifndef",
+    "named": false
+  },
+  {
+    "type": "#Ifnot",
+    "named": false
+  },
+  {
+    "type": "#Iftrue",
+    "named": false
+  },
+  {
     "type": "%",
     "named": false
   },
@@ -2559,10 +2583,6 @@
     "named": false
   },
   {
-    "type": "Endif",
-    "named": false
-  },
-  {
     "type": "Extend",
     "named": false
   },
@@ -2664,26 +2684,6 @@
   },
   {
     "type": "if",
-    "named": false
-  },
-  {
-    "type": "ifdef",
-    "named": false
-  },
-  {
-    "type": "iffalse",
-    "named": false
-  },
-  {
-    "type": "ifndef",
-    "named": false
-  },
-  {
-    "type": "ifnot",
-    "named": false
-  },
-  {
-    "type": "iftrue",
     "named": false
   },
   {
