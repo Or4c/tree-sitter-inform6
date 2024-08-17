@@ -86,7 +86,7 @@ module.exports = grammar({
       seq("return", optional($._expression), ";"),
       seq("rtrue", ";"),
       seq("rfalse", ";"),
-      seq($.string_double_quoted, ";"),
+      seq($.string_double_quoted, repeat(seq(',', $._expression)), ";"),
     ),
     increment: ($) => seq($.identifier, "++", ";"),
     decrement: ($) => seq($.identifier, "--", ";"),

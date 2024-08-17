@@ -166,3 +166,24 @@ Object Property assignment
         )
     )
 )
+
+==================
+Print return value with interpolations
+==================
+
+[ CatchSub;
+    "You can't catch ", (the) noun, ".";
+];
+
+-----
+    (source_file
+      (routine
+        (function_sig
+          (identifier))
+        (function_block
+          (return
+            (string_double_quoted)
+            (cast
+              (identifier)
+              (identifier))
+            (string_double_quoted)))))
