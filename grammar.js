@@ -215,7 +215,7 @@ module.exports = grammar({
 
     _object_member: ($) => choice(
       seq($.prop_mod, $._object_data, repeat(seq(",", $._object_data))),
-      seq($.attr_mod, repeat1($.identifier)),
+      seq($.attr_mod, repeat1(seq(optional('~'), $.identifier))),
     ),
 
     prop_mod: ($) => choice("with", "private"),

@@ -133,6 +133,35 @@ Object magpie "black-striped bird"
     )
 )
 
+
+==================
+Object with negated attributes
+==================
+
+Object magpie "black-striped bird"
+    with
+        wingspan,
+        worms_eaten
+    has ~animate light
+    class ~bird;
+
+-----
+(source_file
+    (object
+        class_name: (identifier)
+        (identifier)
+        (string_double_quoted)
+        (prop_mod)
+        data_id: (identifier)
+        data_id: (identifier)
+        (attr_mod)
+        (identifier)
+        (identifier)
+        (attr_mod)
+        (identifier)
+    )
+)
+
 ==================
 Object with switch blocks in embedded_routine
 ==================
