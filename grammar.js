@@ -149,7 +149,7 @@ module.exports = grammar({
     serial: ($) => seq("Serial", $._expression, ";"),
     release: ($) => seq("Release", $._expression, ";"),
     global: ($) => seq("Global", $.identifier, optional(seq("=", $._expression)), ";"),
-    array: ($) => seq("Array", $.identifier, choice("-->", "table", "string"), $._expression, ";"),
+    array: ($) => seq("Array", $.identifier, choice("->", "-->", "table", "string"), repeat1($._expression), ";"),
     routine: ($) => seq("[", $.function_sig, optional($.function_block), "]", ";"),
     attribute: ($) => seq("Attribute", $.identifier, ";"),
     include: ($) => seq("Include", $.string_double_quoted, ";"),
@@ -258,11 +258,12 @@ module.exports = grammar({
 
     switch_value: ($) => choice(
       $.number,
-      $.string_double_quoted,
+      $._string,
       $.boolean,
       $.nothing,
       $.identifier,
       $.property_access,
+      'default',
       seq($.number, 'to', $.number)
     ),
 

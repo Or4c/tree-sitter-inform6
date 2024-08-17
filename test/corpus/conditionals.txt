@@ -213,9 +213,7 @@ Switch
                     )
                 )
                 (case
-                    (switch_value
-                        (identifier)
-                    )
+                    (switch_value)
                     (print
                         (string_double_quoted)
                     )

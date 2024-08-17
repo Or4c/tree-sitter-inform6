@@ -1286,6 +1286,10 @@
           "members": [
             {
               "type": "STRING",
+              "value": "->"
+            },
+            {
+              "type": "STRING",
               "value": "-->"
             },
             {
@@ -1299,8 +1303,11 @@
           ]
         },
         {
-          "type": "SYMBOL",
-          "name": "_expression"
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "_expression"
+          }
         },
         {
           "type": "STRING",
@@ -2323,7 +2330,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "string_double_quoted"
+          "name": "_string"
         },
         {
           "type": "SYMBOL",
@@ -2340,6 +2347,10 @@
         {
           "type": "SYMBOL",
           "name": "property_access"
+        },
+        {
+          "type": "STRING",
+          "value": "default"
         },
         {
           "type": "SEQ",

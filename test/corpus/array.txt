@@ -90,3 +90,21 @@ Array UUID_ARRAY string "UUID://E9FD3D87-DD2F-4005-B332-23557780B64E//"; #Ifdef 
       (compiler_directive
         (identifier))
       (compiler_directive))
+
+
+==================
+Array definition with initial values
+==================
+
+Array task_scores -> 1 1 1 1 1 1;
+
+-----
+ (source_file
+      (array
+        (identifier)
+        (number)
+        (number)
+        (number)
+        (number)
+        (number)
+        (number)))

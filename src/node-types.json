@@ -2144,7 +2144,7 @@
     "fields": {},
     "children": {
       "multiple": true,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "boolean",
@@ -2168,6 +2168,10 @@
         },
         {
           "type": "string_double_quoted",
+          "named": true
+        },
+        {
+          "type": "string_single_quoted",
           "named": true
         }
       ]
@@ -2641,6 +2645,10 @@
   {
     "type": "comment",
     "named": true
+  },
+  {
+    "type": "default",
+    "named": false
   },
   {
     "type": "do",
