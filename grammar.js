@@ -153,7 +153,15 @@ module.exports = grammar({
     routine: ($) => seq("[", $.function_sig, optional($.function_block), "]", ";"),
     attribute: ($) => seq("Attribute", $.identifier, ";"),
     include: ($) => seq("Include", $.string_double_quoted, ";"),
-    grammar: ($) => seq(choice("Verb", "Extend"), $.string_single_quoted, repeat($.string_single_quoted), repeat1($.grammar_clause), ";"),
+    grammar: ($) => seq(
+      choice("Verb", "Extend"),
+      $.string_single_quoted,
+      repeat(
+        choice(
+          $.string_single_quoted,
+          $.identifier,
+        )), repeat1($.grammar_clause), ";"),
+
     replace: ($) => seq("Replace", $.identifier, ";"),
     compiler_message: ($) => seq("Message", optional(choice("error", "warning", "fatalerror")), $.string_double_quoted, ";"),
     compiler_directive: ($) => seq("#", choice(

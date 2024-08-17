@@ -1291,6 +1291,10 @@
           "named": true
         },
         {
+          "type": "identifier",
+          "named": true
+        },
+        {
           "type": "string_single_quoted",
           "named": true
         }
