@@ -323,3 +323,26 @@ Conditional expression with routine message
 ];
 
 -----
+
+(source_file
+      (routine
+        (function_sig
+          (identifier))
+        (function_block
+          (conditional
+            (binary_expression
+              (binary_expression
+                (binary_expression
+                  (identifier)
+                  (operator)
+                  (identifier))
+                (operator)
+                (routine_call
+                  (identifier)
+                  (routine_message
+                    (number))))
+              (operator)
+              (number))
+            (code_block
+              (print
+                (string_double_quoted)))))))

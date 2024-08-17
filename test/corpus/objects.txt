@@ -204,12 +204,14 @@ Object messages
         (function_block
             (local_var_decl
                 (identifier)
-                (property_access
-                    (identifier)
-                    (identifier)
-                    (routine_message
+                (routine_call
+                    (property_access
+                        (identifier)
                         (identifier)
                     )
+                     (routine_message
+                            (identifier)
+                        )
                 )
             )
         )
@@ -231,7 +233,7 @@ Superclass messages
     (routine
         (function_sig (identifier))
         (function_block
-            (routine_statement
+            (routine_call
                 (property_access
                     (identifier)
                     (identifier)

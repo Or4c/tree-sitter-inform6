@@ -51,6 +51,10 @@
           "named": true
         },
         {
+          "type": "routine_call",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -142,6 +146,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_call",
           "named": true
         },
         {
@@ -257,7 +265,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {
@@ -352,7 +360,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {
@@ -404,6 +412,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_call",
           "named": true
         },
         {
@@ -530,7 +542,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {
@@ -594,6 +606,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_call",
           "named": true
         },
         {
@@ -731,7 +747,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {
@@ -838,7 +854,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {
@@ -965,7 +981,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {
@@ -1068,7 +1084,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {
@@ -1150,6 +1166,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_call",
           "named": true
         },
         {
@@ -1272,6 +1292,10 @@
           "named": true
         },
         {
+          "type": "routine_call",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -1363,6 +1387,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_call",
           "named": true
         },
         {
@@ -1485,7 +1513,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {
@@ -1554,6 +1582,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_call",
           "named": true
         },
         {
@@ -1636,6 +1668,10 @@
           "named": true
         },
         {
+          "type": "routine_call",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -1702,6 +1738,10 @@
           "named": true
         },
         {
+          "type": "routine_call",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -1730,6 +1770,29 @@
         },
         {
           "type": "function_sig",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "routine_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_message",
           "named": true
         }
       ]
@@ -1772,6 +1835,10 @@
           "named": true
         },
         {
+          "type": "routine_call",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -1781,29 +1848,6 @@
         },
         {
           "type": "unary_expression",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "routine_statement",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "property_access",
-          "named": true
-        },
-        {
-          "type": "routine_message",
           "named": true
         }
       ]
@@ -1843,6 +1887,10 @@
         },
         {
           "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_call",
           "named": true
         },
         {
@@ -2050,6 +2098,10 @@
           "named": true
         },
         {
+          "type": "routine_call",
+          "named": true
+        },
+        {
           "type": "string_double_quoted",
           "named": true
         },
@@ -2169,7 +2221,7 @@
           "named": true
         },
         {
-          "type": "routine_statement",
+          "type": "routine_call",
           "named": true
         },
         {

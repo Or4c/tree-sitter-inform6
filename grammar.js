@@ -28,7 +28,7 @@ module.exports = grammar({
     ),
 
     _statement: ($) => choice(
-      $.routine_statement,
+      $._routine_statement,
       $._loop,
       $.comment,
       $.print,
@@ -68,7 +68,8 @@ module.exports = grammar({
       $._string,
       $.binary_expression,
       $.unary_expression,
-      $.nothing
+      $.nothing,
+      $.routine_call
     )),
 
 
@@ -77,7 +78,7 @@ module.exports = grammar({
     spaces: ($) => seq("spaces", $.number, ";"),
     box: ($) => seq("box", $.string_double_quoted, optional(repeat(seq(',', $.string_double_quoted))), ";"),
     print: ($) => seq(choice("print", "print_ret"), optional(seq('(', $.identifier, ')')), repeat(seq($._expression, ",")), $._expression, ";"),
-    routine_statement: ($) => seq(choice($.identifier, $.property_access), $.routine_message, ";"),
+    _routine_statement: ($) => seq($.routine_call, ";"),
     local_var_decl: ($) => seq(prec.left(5, seq(choice($.identifier, $.property_access), '=')), $._expression, ";"),
     return: ($) => choice(
       seq("return", optional($._expression), ";"),
@@ -235,7 +236,8 @@ module.exports = grammar({
       seq('#', $.identifier)
     ),
 
-    binary_expression: ($) => prec(2, seq($._expression, prec(3, $.operator), $._expression)),
+    routine_call: ($) => seq(choice($.identifier, $.property_access), $.routine_message),
+    binary_expression: ($) => prec(2, seq($._expression, $.operator, $._expression)),
     unary_expression: ($) => prec.left(3, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
 
     _string: ($) => choice(

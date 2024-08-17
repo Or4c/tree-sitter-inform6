@@ -74,7 +74,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "routine_statement"
+          "name": "_routine_statement"
         },
         {
           "type": "SYMBOL",
@@ -217,6 +217,10 @@
           {
             "type": "SYMBOL",
             "name": "nothing"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "routine_call"
           }
         ]
       }
@@ -359,25 +363,12 @@
         }
       ]
     },
-    "routine_statement": {
+    "_routine_statement": {
       "type": "SEQ",
       "members": [
         {
-          "type": "CHOICE",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "identifier"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "property_access"
-            }
-          ]
-        },
-        {
           "type": "SYMBOL",
-          "name": "routine_message"
+          "name": "routine_call"
         },
         {
           "type": "STRING",
@@ -2135,6 +2126,28 @@
         }
       ]
     },
+    "routine_call": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "property_access"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "routine_message"
+        }
+      ]
+    },
     "binary_expression": {
       "type": "PREC",
       "value": 2,
@@ -2146,12 +2159,8 @@
             "name": "_expression"
           },
           {
-            "type": "PREC",
-            "value": 3,
-            "content": {
-              "type": "SYMBOL",
-              "name": "operator"
-            }
+            "type": "SYMBOL",
+            "name": "operator"
           },
           {
             "type": "SYMBOL",

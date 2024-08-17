@@ -12,7 +12,7 @@ Routine Message
     (routine
         (function_sig (identifier))
         (function_block
-            (routine_statement
+            (routine_call
                 (identifier)
                 (routine_message)
             )
@@ -35,11 +35,11 @@ Routine Message with Args
     (routine
         (function_sig (identifier))
         (function_block
-            (routine_statement
+            (routine_call
                 (identifier)
                 (routine_message (number) (string_double_quoted) (string_double_quoted))
             )
-            (routine_statement
+            (routine_call
                 (identifier)
                 (routine_message (number))
             )
