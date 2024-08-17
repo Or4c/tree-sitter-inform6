@@ -311,3 +311,15 @@ If block lt
         )
     )
 )
+
+==================
+Conditional expression with routine message
+==================
+
+[ Main;
+    if (noun ~= w_obj && random(100) <= 95) {
+        print "hello world";
+    }
+];
+
+-----

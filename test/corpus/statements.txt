@@ -140,3 +140,29 @@ Give
         )
     )
 )
+
+==================
+Object Property assignment
+==================
+
+[ Main;
+    Troll.has_caught_treasure = false;
+];
+
+-----
+
+(source_file
+      (routine
+        (function_sig
+          (identifier))
+        (function_block
+          (local_var_decl
+                (property_access
+                    (identifier)
+                    (identifier)
+                )
+                (boolean)
+            )
+        )
+    )
+)

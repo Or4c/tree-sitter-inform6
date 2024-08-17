@@ -3,6 +3,7 @@ module.exports = grammar({
 
   conflicts: ($) => [
     [$.case, $.case],
+    [$.binary_expression, $.binary_expression]
   ],
 
   rules: {
@@ -77,7 +78,7 @@ module.exports = grammar({
     box: ($) => seq("box", $.string_double_quoted, optional(repeat(seq(',', $.string_double_quoted))), ";"),
     print: ($) => seq(choice("print", "print_ret"), optional(seq('(', $.identifier, ')')), repeat(seq($._expression, ",")), $._expression, ";"),
     routine_statement: ($) => seq(choice($.identifier, $.property_access), $.routine_message, ";"),
-    local_var_decl: ($) => seq(prec.left(20, seq($.identifier, '=')), $._expression, ";"),
+    local_var_decl: ($) => seq(prec.left(5, seq(choice($.identifier, $.property_access), '=')), $._expression, ";"),
     return: ($) => choice(
       seq("return", optional($._expression), ";"),
       seq("rtrue", ";"),
@@ -234,7 +235,7 @@ module.exports = grammar({
       seq('#', $.identifier)
     ),
 
-    binary_expression: ($) => prec.left(1, seq($._expression, prec(2, $.operator), $._expression)),
+    binary_expression: ($) => prec(2, seq($._expression, prec(3, $.operator), $._expression)),
     unary_expression: ($) => prec.left(3, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
 
     _string: ($) => choice(

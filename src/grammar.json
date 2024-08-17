@@ -390,13 +390,22 @@
       "members": [
         {
           "type": "PREC_LEFT",
-          "value": 20,
+          "value": 5,
           "content": {
             "type": "SEQ",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "identifier"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "property_access"
+                  }
+                ]
               },
               {
                 "type": "STRING",
@@ -785,35 +794,6 @@
           }
         ]
       }
-    },
-    "switch_block": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "identifier"
-        },
-        {
-          "type": "REPEAT",
-          "content": {
-            "type": "SEQ",
-            "members": [
-              {
-                "type": "STRING",
-                "value": ","
-              },
-              {
-                "type": "SYMBOL",
-                "name": "identifier"
-              }
-            ]
-          }
-        },
-        {
-          "type": "STRING",
-          "value": ":"
-        }
-      ]
     },
     "_switch": {
       "type": "SEQ",
@@ -1890,6 +1870,35 @@
         }
       ]
     },
+    "switch_block": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "STRING",
+                "value": ","
+              },
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              }
+            ]
+          }
+        },
+        {
+          "type": "STRING",
+          "value": ":"
+        }
+      ]
+    },
     "_object_member": {
       "type": "CHOICE",
       "members": [
@@ -2127,8 +2136,8 @@
       ]
     },
     "binary_expression": {
-      "type": "PREC_LEFT",
-      "value": 1,
+      "type": "PREC",
+      "value": 2,
       "content": {
         "type": "SEQ",
         "members": [
@@ -2138,7 +2147,7 @@
           },
           {
             "type": "PREC",
-            "value": 2,
+            "value": 3,
             "content": {
               "type": "SYMBOL",
               "name": "operator"
@@ -2435,6 +2444,10 @@
     [
       "case",
       "case"
+    ],
+    [
+      "binary_expression",
+      "binary_expression"
     ]
   ],
   "precedences": [],
