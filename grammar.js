@@ -237,8 +237,13 @@ module.exports = grammar({
     ),
 
     routine_call: ($) => seq(choice($.identifier, $.property_access), $.routine_message),
-    binary_expression: ($) => prec(2, seq($._expression, $.operator, $._expression)),
-    unary_expression: ($) => prec.left(3, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
+
+    binary_expression: ($) => choice(
+      prec(2, seq($._expression, $.operator, $._expression)),
+      prec(3, seq('(', $._expression, $.operator, $._expression, ')'))
+    ),
+
+    unary_expression: ($) => prec.left(4, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
 
     _string: ($) => choice(
       $.string_single_quoted,

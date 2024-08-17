@@ -346,3 +346,38 @@ Conditional expression with routine message
             (code_block
               (print
                 (string_double_quoted)))))))
+
+
+==================
+Binary expression with brackets
+==================
+
+[ Main;
+    if ((noun ~= w_obj) && (random(100) <= 95)) {
+        print "hello world";
+    }
+];
+
+-----
+(source_file
+      (routine
+        (function_sig
+          (identifier))
+        (function_block
+          (conditional
+            (binary_expression
+              (binary_expression
+                (identifier)
+                (operator)
+                (identifier))
+              (operator)
+              (binary_expression
+                (routine_call
+                  (identifier)
+                  (routine_message
+                    (number)))
+                (operator)
+                (number)))
+            (code_block
+              (print
+                (string_double_quoted)))))))
