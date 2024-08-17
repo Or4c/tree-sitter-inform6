@@ -149,7 +149,7 @@ module.exports = grammar({
     serial: ($) => seq("Serial", $._expression, ";"),
     release: ($) => seq("Release", $._expression, ";"),
     global: ($) => seq("Global", $.identifier, optional(seq("=", $._expression)), ";"),
-    array: ($) => seq("Array", $.identifier, choice("-->", "table"), $._expression, ";"),
+    array: ($) => seq("Array", $.identifier, choice("-->", "table", "string"), $._expression, ";"),
     routine: ($) => seq("[", $.function_sig, optional($.function_block), "]", ";"),
     attribute: ($) => seq("Attribute", $.identifier, ";"),
     include: ($) => seq("Include", $.string_double_quoted, ";"),

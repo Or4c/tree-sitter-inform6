@@ -1291,6 +1291,10 @@
             {
               "type": "STRING",
               "value": "table"
+            },
+            {
+              "type": "STRING",
+              "value": "string"
             }
           ]
         },

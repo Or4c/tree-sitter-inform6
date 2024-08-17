@@ -75,3 +75,18 @@ Array length
         )
     )
 )
+
+==================
+String arrays
+==================
+
+Array UUID_ARRAY string "UUID://E9FD3D87-DD2F-4005-B332-23557780B64E//"; #Ifdef UUID_ARRAY; #Endif;
+
+-----
+ (source_file
+      (array
+        (identifier)
+        (string_double_quoted))
+      (compiler_directive
+        (identifier))
+      (compiler_directive))

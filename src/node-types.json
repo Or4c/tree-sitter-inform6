@@ -2763,6 +2763,10 @@
     "named": false
   },
   {
+    "type": "string",
+    "named": false
+  },
+  {
     "type": "switch",
     "named": false
   },
