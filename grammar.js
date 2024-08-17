@@ -100,8 +100,8 @@ module.exports = grammar({
     routine_message: ($) => prec.left(seq('(', repeat(seq($._expression, ",")), optional($._expression), ")")),
 
     tree_statement: ($) => choice(
-      seq("move", $.identifier, "to", $.identifier, ";"),
-      seq("remove", $.identifier, ";"),
+      seq("move", $._expression, "to", $._expression, ";"),
+      seq("remove", $._expression, ";"),
     ),
 
 

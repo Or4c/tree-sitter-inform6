@@ -381,3 +381,38 @@ Binary expression with brackets
             (code_block
               (print
                 (string_double_quoted)))))))
+
+==================
+Single If with no block and additional statements
+==================
+
+[ Main;
+   if (child(bottle) == nothing)
+        "The bottle is already empty!";
+    remove child(bottle);
+    "Your bottle is now empty and the ground is now wet.";
+];
+
+----
+    (source_file
+      (routine
+        (function_sig
+          (identifier))
+        (function_block
+          (conditional
+            (binary_expression
+              (routine_call
+                (identifier)
+                (routine_message
+                  (identifier)))
+              (operator)
+              (nothing))
+            (return
+              (string_double_quoted)))
+          (tree_statement
+            (routine_call
+              (identifier)
+              (routine_message
+                (identifier))))
+          (return
+            (string_double_quoted)))))

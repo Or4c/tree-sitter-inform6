@@ -699,7 +699,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "_expression"
             },
             {
               "type": "STRING",
@@ -707,7 +707,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "_expression"
             },
             {
               "type": "STRING",
@@ -724,7 +724,7 @@
             },
             {
               "type": "SYMBOL",
-              "name": "identifier"
+              "name": "_expression"
             },
             {
               "type": "STRING",
@@ -2365,6 +2365,10 @@
         {
           "type": "STRING",
           "value": "<"
+        },
+        {
+          "type": "STRING",
+          "value": ">"
         },
         {
           "type": "STRING",
