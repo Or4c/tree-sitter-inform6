@@ -6,6 +6,8 @@ module.exports = grammar({
     [$.binary_expression, $.binary_expression]
   ],
 
+  extras: ($) => [/\p{White_Space}*/u, $.comment],
+
   rules: {
     source_file: ($) => repeat($._directive),
 
