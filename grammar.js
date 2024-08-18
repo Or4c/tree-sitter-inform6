@@ -3,7 +3,9 @@ module.exports = grammar({
 
   conflicts: ($) => [
     [$.case, $.case],
-    [$.binary_expression, $.binary_expression]
+    [$.binary_expression, $.binary_expression],
+    [$.array, $.binary_expression],
+    [$._data_list, $.binary_expression]
   ],
 
   extras: ($) => [/\p{White_Space}*/u, $.comment],
@@ -76,7 +78,6 @@ module.exports = grammar({
       $.routine_call
     )),
 
-
     // Statement Rules
     new_line: ($) => seq("new_line", ";"),
     spaces: ($) => seq("spaces", $.number, ";"),
@@ -105,8 +106,6 @@ module.exports = grammar({
       seq("move", $._expression, "to", $._expression, ";"),
       seq("remove", $._expression, ";"),
     ),
-
-
 
     // Conditional Rules
     _if: ($) => prec.left(10, seq("if",
@@ -203,7 +202,7 @@ module.exports = grammar({
       seq(field('data_id', $.identifier), optional(choice($._data_list, $.embedded_routine))),
       seq($.attr_mod, repeat1($.identifier)),
     ),
-    _data_list: ($) => seq($._expression, repeat($._expression)),
+    _data_list: ($) => prec.left(seq($._expression, repeat($._expression))),
     embedded_routine: ($) => seq("[", $.function_sig, repeat(
       choice(
         seq($.switch_block, $._statement),
@@ -214,8 +213,8 @@ module.exports = grammar({
     switch_block: ($) => seq($.identifier, repeat(seq(',', $.identifier)), ":"),
 
     _object_member: ($) => choice(
-      seq($.prop_mod, $._object_data, repeat(seq(",", $._object_data))),
-      seq($.attr_mod, repeat1(seq(optional('~'), $.identifier))),
+      prec(3, seq($.prop_mod, $._object_data, repeat(seq(",", $._object_data)))),
+      prec(3, seq($.attr_mod, repeat1(seq(optional('~'), $.identifier)))),
     ),
 
     prop_mod: ($) => choice("with", "private"),
@@ -244,13 +243,13 @@ module.exports = grammar({
     ),
 
     array_access: ($) => choice(
-      seq(optional('&'), $.identifier, '-->', $.number),
+      seq(optional('&'), $.identifier, choice('-->', '->'), $.number),
       seq('#', $.identifier)
     ),
 
     cast: ($) => prec(100, seq('(', $.identifier, ')', $._expression)),
     routine_call: ($) => seq(choice($.identifier, $.property_access), $.routine_message),
-    binary_expression: ($) => prec(2, seq($._expression, $.operator, $._expression)),
+    binary_expression: ($) => seq($._expression, $.operator, $._expression),
     unary_expression: ($) => prec.left(4, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
 
     _string: ($) => choice(

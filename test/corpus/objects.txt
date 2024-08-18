@@ -111,10 +111,8 @@ Object with attributes
 
 Object magpie "black-striped bird"
     with
-        wingspan,
-        worms_eaten
-    has animate light
-    class bird;
+        description "The magpie is a black-striped bird."
+    has ~animate;
 
 -----
 (source_file
@@ -124,10 +122,7 @@ Object magpie "black-striped bird"
         (string_double_quoted)
         (prop_mod)
         data_id: (identifier)
-        data_id: (identifier)
-        (attr_mod)
-        (identifier)
-        (identifier)
+        (string_double_quoted)
         (attr_mod)
         (identifier)
     )
@@ -176,7 +171,7 @@ Object magpie "black-striped bird"
             Fish, Examine: "The mushroom is a small, white fungus with a thin stalk.";
             Empty: ;
         ]
-    has animate light
+    has ~animate light
     class bird;
 
 -----
