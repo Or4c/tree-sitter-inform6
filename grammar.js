@@ -7,7 +7,7 @@ module.exports = grammar({
     [$.array, $.binary_expression],
     [$._data_list, $.binary_expression],
     [$._object_header, $._object_header],
-    [$.property_block, $.property_block],
+    [$._expression, $._expression]
   ],
 
   extras: ($) => [/\p{White_Space}*/u, $.comment],
@@ -69,6 +69,7 @@ module.exports = grammar({
     _expression: ($) => prec.left(choice(
       $.cast,
       prec(50, seq('(', $._expression, ')')),
+      seq('~', $.identifier),
       $.identifier,
       $.property_access,
       $.array_access,
@@ -192,11 +193,8 @@ module.exports = grammar({
     object: ($) => seq(
       $._object_header,
       optional($.class_assignment),
-      optional($.property_block),
-      optional(seq(',', $.attribute_assignment)),
+      optional($.object_body),
       ";"),
-
-    prop_mod: ($) => choice("with", "private"),
 
     _object_header: ($) => seq(
       optional("Metaclass"),
@@ -207,8 +205,6 @@ module.exports = grammar({
       )
     ),
 
-
-
     embedded_routine: ($) => seq("[", $.function_sig, repeat(
       choice(
         seq($.switch_block, $._statement),
@@ -217,13 +213,16 @@ module.exports = grammar({
       )
     ), "]"),
     switch_block: ($) => seq($.identifier, repeat(seq(',', $.identifier)), ":"),
+    prop_mod: ($) => choice("with", "private", "has"),
 
-    attribute_assignment: ($) => seq("has", repeat1(choice($.identifier, seq('~', $.identifier)))),
-    property_block: ($) => seq($.prop_mod, $._object_data, repeat(seq(",", $._object_data))),
+    object_body: ($) => seq(
+      $.prop_mod, $._object_data, repeat(seq(',', choice(seq($.prop_mod, $._object_data), $._object_data)))
+    ),
+
     class_assignment: ($) => seq('class', $.identifier),
 
     _data_list: ($) => seq($._expression, repeat($._expression)),
-    _object_data: ($) => seq(field('data_id', $.identifier), optional(choice($._data_list, $.embedded_routine))),
+    _object_data: ($) => seq(field('data_id', repeat1(seq(optional('~'), $.identifier))), optional(choice($._data_list, $.embedded_routine))),
 
     // Expression rules
     property_access: ($) => prec.left(1,

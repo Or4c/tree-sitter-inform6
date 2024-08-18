@@ -24,7 +24,7 @@ Object magpie "black-striped bird"
         class_name: (identifier)
         label: (identifier)
         sdec: (string_double_quoted)
-        (property_block
+        (object_body
             (prop_mod)
             data_id: (identifier)
             data_id: (identifier)
@@ -47,16 +47,15 @@ Scenic  -> "~Y2~ rock"
     (object
         class_name: (identifier)
         sdec: (string_double_quoted)
-        (property_block
+        (object_body
             (prop_mod)
             data_id: (identifier)
             (string_single_quoted)
             (string_single_quoted)
             data_id: (identifier)
             (string_double_quoted)
-        )
-        (attribute_assignment
-            (identifier)
+            (prop_mod)
+            data_id: (identifier)
         )
     )
 )
@@ -80,7 +79,7 @@ Object magpie "black-striped bird"
         class_name: (identifier)
         label: (identifier)
         sdec: (string_double_quoted)
-        (property_block
+        (object_body
             (prop_mod)
             data_id: (identifier)
             (string_single_quoted)
@@ -126,13 +125,12 @@ Object magpie "black-striped bird"
         class_name: (identifier)
         label: (identifier)
         sdec: (string_double_quoted)
-        (property_block
+        (object_body
             (prop_mod)
              data_id: (identifier)
             (string_double_quoted)
-        )
-        (attribute_assignment
-          (identifier)
+            (prop_mod)
+            data_id: (identifier)
         )
     )
 )
@@ -147,14 +145,14 @@ Object -> "toothed bag"
        initial "In one corner is a curious, toothed bag.",
        description "A capacious bag with a toothed mouth.",
 
-  has  ~container open;
+  has  ~container ~open;
 
 -----
 (source_file
     (object
         class_name: (identifier)
         sdec: (string_double_quoted)
-        (property_block
+        (object_body
             (prop_mod)
              data_id: (identifier)
             (string_double_quoted)
@@ -163,10 +161,9 @@ Object -> "toothed bag"
             (string_double_quoted)
             data_id: (identifier)
             (string_double_quoted)
-        )
-        (attribute_assignment
-          (identifier)
-          (identifier)
+            (prop_mod)
+            data_id: (identifier)
+            data_id: (identifier)
         )
     )
 )
@@ -197,7 +194,7 @@ Object magpie "black-striped bird"
         (class_assignment
             (identifier)
         )
-        (property_block
+        (object_body
             (prop_mod)
             data_id: (identifier)
             data_id: (identifier)

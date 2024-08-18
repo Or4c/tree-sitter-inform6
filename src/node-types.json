@@ -108,21 +108,6 @@
     }
   },
   {
-    "type": "attribute_assignment",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
     "type": "binary_expression",
     "named": true,
     "fields": {},
@@ -1488,10 +1473,6 @@
       "required": false,
       "types": [
         {
-          "type": "attribute_assignment",
-          "named": true
-        },
-        {
           "type": "class_assignment",
           "named": true
         },
@@ -1504,7 +1485,89 @@
           "named": true
         },
         {
-          "type": "property_block",
+          "type": "object_body",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "object_body",
+    "named": true,
+    "fields": {
+      "data_id": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "~",
+            "named": false
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_access",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "cast",
+          "named": true
+        },
+        {
+          "type": "embedded_routine",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "nothing",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "prop_mod",
+          "named": true
+        },
+        {
+          "type": "property_access",
+          "named": true
+        },
+        {
+          "type": "routine_call",
+          "named": true
+        },
+        {
+          "type": "string_double_quoted",
+          "named": true
+        },
+        {
+          "type": "string_single_quoted",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
           "named": true
         }
       ]
@@ -1736,84 +1799,6 @@
         },
         {
           "type": "routine_message",
-          "named": true
-        }
-      ]
-    }
-  },
-  {
-    "type": "property_block",
-    "named": true,
-    "fields": {
-      "data_id": {
-        "multiple": true,
-        "required": true,
-        "types": [
-          {
-            "type": "identifier",
-            "named": true
-          }
-        ]
-      }
-    },
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "array_access",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
-          "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "cast",
-          "named": true
-        },
-        {
-          "type": "embedded_routine",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        },
-        {
-          "type": "nothing",
-          "named": true
-        },
-        {
-          "type": "number",
-          "named": true
-        },
-        {
-          "type": "prop_mod",
-          "named": true
-        },
-        {
-          "type": "property_access",
-          "named": true
-        },
-        {
-          "type": "routine_call",
-          "named": true
-        },
-        {
-          "type": "string_double_quoted",
-          "named": true
-        },
-        {
-          "type": "string_single_quoted",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
           "named": true
         }
       ]
