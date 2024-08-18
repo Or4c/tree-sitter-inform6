@@ -5,7 +5,9 @@ module.exports = grammar({
     [$.case, $.case],
     [$.binary_expression, $.binary_expression],
     [$.array, $.binary_expression],
-    [$._data_list, $.binary_expression]
+    [$._data_list, $.binary_expression],
+    [$._object_header, $._object_header],
+    [$.property_block, $.property_block],
   ],
 
   extras: ($) => [/\p{White_Space}*/u, $.comment],
@@ -48,7 +50,8 @@ module.exports = grammar({
       $.tree_statement,
       $.give,
       $.action,
-      $.compiler_directive
+      $.compiler_directive,
+
     ),
 
     _loop: ($) => choice(
@@ -184,25 +187,28 @@ module.exports = grammar({
       $.identifier
     ),
 
+    // Object Rules
+
     object: ($) => seq(
-      optional("Metaclass"),
-      choice(
-        seq(field('class_name', $.identifier), optional($.identifier)),
-        seq(field('class_name', $.identifier), optional(seq('(', $.number, ')')), optional($.identifier))),
-      repeat('->'),
-      optional($.identifier),
-      optional($._string),
-      optional($.identifier),
-      optional(seq(
-        $._object_member,
-        repeat($._object_member))),
+      $._object_header,
+      optional($.class_assignment),
+      optional($.property_block),
+      optional(seq(',', $.attribute_assignment)),
       ";"),
 
-    _object_data: ($) => choice(
-      seq(field('data_id', $.identifier), optional(choice($._data_list, $.embedded_routine))),
-      seq($.attr_mod, repeat1($.identifier)),
+    prop_mod: ($) => choice("with", "private"),
+
+    _object_header: ($) => seq(
+      optional("Metaclass"),
+      choice(
+        seq(field('class_name', $.identifier), repeat('->'), optional(field('label', $.identifier)), optional(field('sdec', $._string))),
+        seq(field('class_name', $.identifier), optional(field('label', $.identifier)), optional(field('sdec', $._string)), optional(field('label', $.identifier))),
+        seq(field('class_name', $.identifier), optional(seq('(', $.number, ')')), optional($.identifier))
+      )
     ),
-    _data_list: ($) => prec.left(seq($._expression, repeat($._expression))),
+
+
+
     embedded_routine: ($) => seq("[", $.function_sig, repeat(
       choice(
         seq($.switch_block, $._statement),
@@ -212,13 +218,12 @@ module.exports = grammar({
     ), "]"),
     switch_block: ($) => seq($.identifier, repeat(seq(',', $.identifier)), ":"),
 
-    _object_member: ($) => choice(
-      prec(3, seq($.prop_mod, $._object_data, repeat(seq(",", $._object_data)))),
-      prec(3, seq($.attr_mod, repeat1(seq(optional('~'), $.identifier)))),
-    ),
+    attribute_assignment: ($) => seq("has", repeat1(choice($.identifier, seq('~', $.identifier)))),
+    property_block: ($) => seq($.prop_mod, $._object_data, repeat(seq(",", $._object_data))),
+    class_assignment: ($) => seq('class', $.identifier),
 
-    prop_mod: ($) => choice("with", "private"),
-    attr_mod: ($) => choice("has", "class"),
+    _data_list: ($) => seq($._expression, repeat($._expression)),
+    _object_data: ($) => seq(field('data_id', $.identifier), optional(choice($._data_list, $.embedded_routine))),
 
     // Expression rules
     property_access: ($) => prec.left(1,

@@ -22,11 +22,13 @@ Object magpie "black-striped bird"
 (source_file
     (object
         class_name: (identifier)
-        (identifier)
-        (string_double_quoted)
-        (prop_mod)
-        data_id: (identifier)
-        data_id: (identifier)
+        label: (identifier)
+        sdec: (string_double_quoted)
+        (property_block
+            (prop_mod)
+            data_id: (identifier)
+            data_id: (identifier)
+        )
     )
 )
 
@@ -37,22 +39,25 @@ Has parsing
 Scenic  -> "~Y2~ rock"
   with  name 'rock' 'y2',
         description "There is a large ~Y2~ painted on the rock.",
-  has   supporter;
+  has supporter;
 
 -----
 
 (source_file
     (object
         class_name: (identifier)
-        (string_double_quoted)
-        (prop_mod)
-        data_id: (identifier)
-        (string_single_quoted)
-        (string_single_quoted)
-        data_id: (identifier)
-        (string_double_quoted)
-        (attr_mod)
-        (identifier)
+        sdec: (string_double_quoted)
+        (property_block
+            (prop_mod)
+            data_id: (identifier)
+            (string_single_quoted)
+            (string_single_quoted)
+            data_id: (identifier)
+            (string_double_quoted)
+        )
+        (attribute_assignment
+            (identifier)
+        )
     )
 )
 
@@ -73,35 +78,36 @@ Object magpie "black-striped bird"
 (source_file
     (object
         class_name: (identifier)
-        (identifier)
-        (string_double_quoted)
-        (prop_mod)
-        data_id: (identifier)
-        (string_single_quoted)
-        (string_single_quoted)
-        (string_single_quoted)
-        (string_single_quoted)
-        (string_single_quoted)
-        data_id: (identifier)
-        (number)
-        data_id: (identifier)
-        (embedded_routine
-            (function_sig)
-            (return
-                (binary_expression
-                    (property_access
-                        (identifier)
-                        (identifier)
-                    )
-                    (operator)
-                    (property_access
-                        (identifier)
-                        (identifier)
+        label: (identifier)
+        sdec: (string_double_quoted)
+        (property_block
+            (prop_mod)
+            data_id: (identifier)
+            (string_single_quoted)
+            (string_single_quoted)
+            (string_single_quoted)
+            (string_single_quoted)
+            (string_single_quoted)
+            data_id: (identifier)
+            (number)
+            data_id: (identifier)
+            (embedded_routine
+                (function_sig)
+                (return
+                    (binary_expression
+                        (property_access
+                            (identifier)
+                            (identifier))
+                        (operator)
+                        (property_access
+                            (identifier)
+                            (identifier)
+                        )
                     )
                 )
             )
+            data_id: (identifier)
         )
-        data_id: (identifier)
     )
 )
 
@@ -111,20 +117,23 @@ Object with attributes
 
 Object magpie "black-striped bird"
     with
-        description "The magpie is a black-striped bird."
+        description "The magpie is a black-striped bird.",
     has ~animate;
 
 -----
 (source_file
     (object
         class_name: (identifier)
-        (identifier)
-        (string_double_quoted)
-        (prop_mod)
-        data_id: (identifier)
-        (string_double_quoted)
-        (attr_mod)
-        (identifier)
+        label: (identifier)
+        sdec: (string_double_quoted)
+        (property_block
+            (prop_mod)
+             data_id: (identifier)
+            (string_double_quoted)
+        )
+        (attribute_assignment
+          (identifier)
+        )
     )
 )
 
@@ -133,27 +142,32 @@ Object magpie "black-striped bird"
 Object with negated attributes
 ==================
 
-Object magpie "black-striped bird"
-    with
-        wingspan,
-        worms_eaten
-    has ~animate light
-    class ~bird;
+Object -> "toothed bag"
+  with name "toothed" "bag",
+       initial "In one corner is a curious, toothed bag.",
+       description "A capacious bag with a toothed mouth.",
+
+  has  ~container open;
 
 -----
 (source_file
     (object
         class_name: (identifier)
-        (identifier)
-        (string_double_quoted)
-        (prop_mod)
-        data_id: (identifier)
-        data_id: (identifier)
-        (attr_mod)
-        (identifier)
-        (identifier)
-        (attr_mod)
-        (identifier)
+        sdec: (string_double_quoted)
+        (property_block
+            (prop_mod)
+             data_id: (identifier)
+            (string_double_quoted)
+            (string_double_quoted)
+            data_id: (identifier)
+            (string_double_quoted)
+            data_id: (identifier)
+            (string_double_quoted)
+        )
+        (attribute_assignment
+          (identifier)
+          (identifier)
+        )
     )
 )
 
@@ -162,6 +176,7 @@ Object with switch blocks in embedded_routine
 ==================
 
 Object magpie "black-striped bird"
+    class bird
     with
         wingspan,
         worms_eaten,
@@ -170,46 +185,43 @@ Object magpie "black-striped bird"
             Drop: "The mushroom drops to the ground, battered slightly.";
             Fish, Examine: "The mushroom is a small, white fungus with a thin stalk.";
             Empty: ;
-        ]
-    has ~animate light
-    class bird;
+        ],
+    has ~animate light;
 
------
+
 (source_file
     (object
         class_name: (identifier)
-        (identifier)
-        (string_double_quoted)
-        (prop_mod)
-        data_id: (identifier)
-        data_id: (identifier)
-        data_id: (identifier)
-        (embedded_routine
-            (function_sig)
-            (switch_block (identifier))
-            (return
-                (string_double_quoted)
-            )
-            (switch_block (identifier))
-            (return
-                (string_double_quoted)
-            )
-            (switch_block
-                (identifier)
-                (identifier)
-            )
-            (return
-                (string_double_quoted)
-            )
-            (switch_block (identifier))
+        label: (identifier)
+        sdec: (string_double_quoted)
+        (class_assignment
+            (identifier)
         )
-        (attr_mod)
-        (identifier)
-        (identifier)
-        (attr_mod)
-        (identifier)
-    )
-)
+        (property_block
+            (prop_mod)
+            data_id: (identifier)
+            data_id: (identifier)
+            data_id: (identifier)
+            (embedded_routine
+                (function_sig)
+            (switch_block
+              (identifier))
+            (return
+              (string_double_quoted))
+            (switch_block
+              (identifier))
+            (return
+              (string_double_quoted))
+            (switch_block
+              (identifier)
+              (identifier))
+            (return
+              (string_double_quoted))
+            (switch_block
+              (identifier))))
+        (attribute_assignment
+          (identifier)
+          (identifier))))
 
 
 ==================
