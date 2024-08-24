@@ -2025,14 +2025,39 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "_expression"
+          "name": "_data_list_value"
         },
         {
-          "type": "REPEAT",
+          "type": "REPEAT1",
           "content": {
             "type": "SYMBOL",
-            "name": "_expression"
+            "name": "_data_list_value"
           }
+        }
+      ]
+    },
+    "_data_list_value": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "identifier"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "number"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "boolean"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_string"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "prop_mod"
         }
       ]
     },
@@ -2073,6 +2098,10 @@
             {
               "type": "CHOICE",
               "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "_data_list_value"
+                },
                 {
                   "type": "SYMBOL",
                   "name": "_data_list"
@@ -2630,16 +2659,12 @@
       "binary_expression"
     ],
     [
-      "_data_list",
-      "binary_expression"
-    ],
-    [
       "_object_header",
       "_object_header"
     ],
     [
-      "_expression",
-      "_expression"
+      "_data_list_value",
+      "_data_list_value"
     ]
   ],
   "precedences": [],

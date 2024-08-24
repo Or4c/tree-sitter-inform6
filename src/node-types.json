@@ -1515,19 +1515,7 @@
       "required": true,
       "types": [
         {
-          "type": "array_access",
-          "named": true
-        },
-        {
-          "type": "binary_expression",
-          "named": true
-        },
-        {
           "type": "boolean",
-          "named": true
-        },
-        {
-          "type": "cast",
           "named": true
         },
         {
@@ -1539,10 +1527,6 @@
           "named": true
         },
         {
-          "type": "nothing",
-          "named": true
-        },
-        {
           "type": "number",
           "named": true
         },
@@ -1551,23 +1535,11 @@
           "named": true
         },
         {
-          "type": "property_access",
-          "named": true
-        },
-        {
-          "type": "routine_call",
-          "named": true
-        },
-        {
           "type": "string_double_quoted",
           "named": true
         },
         {
           "type": "string_single_quoted",
-          "named": true
-        },
-        {
-          "type": "unary_expression",
           "named": true
         }
       ]

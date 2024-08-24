@@ -11,6 +11,52 @@ Object;
     )
 )
 
+
+==================
+Data list followed by a has statement
+==================
+
+Object -> "bolted cupboard"
+  with name "bolted" "cupboard",
+       describe
+       [; if (self hasnt open) "^A shut cupboard is bolted to one wall.";
+          "^Bolted up on one wall is an open cupboard.";
+       ],
+       with_key key
+  has  locked container openable lockable static;
+
+-----
+
+   (source_file
+      (object
+        (identifier)
+        (string_double_quoted)
+        (object_body
+          (prop_mod)
+          (identifier)
+          (string_double_quoted)
+          (string_double_quoted)
+          (identifier)
+          (embedded_routine
+            (function_sig)
+            (conditional
+              (binary_expression
+                (identifier)
+                (operator)
+                (identifier))
+              (return
+                (string_double_quoted)))
+            (return
+              (string_double_quoted)))
+          (identifier)
+          (identifier)
+          (prop_mod)
+          (identifier)
+          (identifier)
+          (identifier)
+          (identifier)
+          (identifier))))
+
 ==================
 Object with props
 ==================
@@ -185,6 +231,7 @@ Object magpie "black-striped bird"
         ],
     has ~animate light;
 
+-----
 
 (source_file
     (object
@@ -215,10 +262,10 @@ Object magpie "black-striped bird"
             (return
               (string_double_quoted))
             (switch_block
-              (identifier))))
-        (attribute_assignment
-          (identifier)
-          (identifier))))
+              (identifier)))
+          (prop_mod)
+          data_id: (identifier)
+          data_id: (identifier))))
 
 
 ==================

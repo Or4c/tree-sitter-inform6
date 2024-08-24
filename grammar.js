@@ -5,9 +5,8 @@ module.exports = grammar({
     [$.case, $.case],
     [$.binary_expression, $.binary_expression],
     [$.array, $.binary_expression],
-    [$._data_list, $.binary_expression],
     [$._object_header, $._object_header],
-    [$._expression, $._expression]
+    [$._data_list_value, $._data_list_value]
   ],
 
   extras: ($) => [/\p{White_Space}*/u, $.comment],
@@ -221,8 +220,18 @@ module.exports = grammar({
 
     class_assignment: ($) => seq('class', $.identifier),
 
-    _data_list: ($) => seq($._expression, repeat($._expression)),
-    _object_data: ($) => seq(field('data_id', repeat1(seq(optional('~'), $.identifier))), optional(choice($._data_list, $.embedded_routine))),
+    _data_list: ($) => seq($._data_list_value, repeat1($._data_list_value)),
+
+    _data_list_value: ($) => choice(
+      $.identifier,
+      $.number,
+      $.boolean,
+      $._string,
+      $.prop_mod
+    ),
+
+
+    _object_data: ($) => seq(field('data_id', repeat1(seq(optional('~'), $.identifier))), optional(choice($._data_list_value, $._data_list, $.embedded_routine))),
 
     // Expression rules
     property_access: ($) => prec.left(1,
