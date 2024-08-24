@@ -308,14 +308,15 @@ Superclass messages
 ];
 
 -----
-
 (source_file
     (routine
-        (function_sig (identifier))
-        (function_block
+        (function_sig
+            (identifier)
+        )
+        (ERROR
+            (identifier)
             (routine_call
                 (property_access
-                    (identifier)
                     (identifier)
                     (identifier)
                 )

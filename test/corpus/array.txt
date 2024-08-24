@@ -29,23 +29,22 @@ Array access
 
 (source_file
     (routine
-        (function_sig (identifier))
+        (function_sig
+          (identifier))
         (function_block
             (print
-               (cast
-               (identifier)
-                (property_access
-                    (identifier)
-                    (array_access
+                (array_access
+                    (cast
                         (identifier)
-                        (number)
+                        (property_access
+                            (identifier)
+                            (identifier)
+                        )
                     )
-                )
+                    (number)
                 )
             )
-        )
-    )
-)
+)   )   )
 
 ==================
 Array length
@@ -108,3 +107,40 @@ Array task_scores -> 1 1 1 1 1 1;
         (number)
         (number)
         (number)))
+
+
+==================
+Array access brackets
+==================
+
+[ Main;
+    if ((parser_two.&number)->i == 3)
+        print "Success!";
+];
+
+-----
+(source_file
+    (routine
+        (function_sig
+            (identifier)
+        )
+        (function_block
+            (conditional
+                (binary_expression
+                    (array_access
+                        (property_access
+                            (identifier)
+                            (identifier)
+                        )
+                        (identifier)
+                    )
+                    (operator)
+                    (number)
+                )
+                (print
+                    (string_double_quoted)
+                )
+            )
+        )
+    )
+)

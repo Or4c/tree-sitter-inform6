@@ -3,7 +3,6 @@ module.exports = grammar({
 
   conflicts: ($) => [
     [$.case, $.case],
-    [$.binary_expression, $.binary_expression],
     [$.array, $.binary_expression],
     [$._object_header, $._object_header],
     [$._data_list_value, $._data_list_value]
@@ -69,8 +68,8 @@ module.exports = grammar({
       $.cast,
       prec(50, seq('(', $._expression, ')')),
       seq('~', $.identifier),
-      $.identifier,
       $.property_access,
+      $.identifier,
       $.array_access,
       $.number,
       $.boolean,
@@ -103,7 +102,7 @@ module.exports = grammar({
       seq("<<", repeat1($.identifier), '>>', ";")
     ),
 
-    routine_message: ($) => prec.left(seq('(', repeat(seq($._expression, ",")), optional($._expression), ")")),
+
 
     tree_statement: ($) => choice(
       seq("move", $._expression, "to", $._expression, ";"),
@@ -251,14 +250,15 @@ module.exports = grammar({
             $.identifier, $.routine_message)))
     ),
 
-    array_access: ($) => choice(
-      seq(optional('&'), $.identifier, choice('-->', '->'), $.number),
+    array_access: ($) => prec.left(choice(
+      seq($._expression, choice('-->', '->'), $._expression),
       seq('#', $.identifier)
-    ),
+    )),
 
-    cast: ($) => prec(100, seq('(', $.identifier, ')', $._expression)),
+    cast: ($) => prec(1000, seq(prec(100, seq('(', $.identifier, ')')), $._expression)),
     routine_call: ($) => seq(choice($.identifier, $.property_access), $.routine_message),
-    binary_expression: ($) => seq($._expression, $.operator, $._expression),
+    routine_message: ($) => prec.left(seq('(', repeat(seq($._expression, ",")), optional($._expression), ")")),
+    binary_expression: ($) => prec.left(seq($._expression, $.operator, $._expression)),
     unary_expression: ($) => prec.left(4, choice(seq(choice('-', '++', '--'), $._expression), seq($._expression, choice('--', '++')))),
 
     _string: ($) => choice(
@@ -281,7 +281,7 @@ module.exports = grammar({
     nothing: ($) => "nothing",
     operator: ($) => choice('+', '-', '/', '*', '%', '<', '>', '<=', '>=', '==', '~=', 'or', 'has', 'hasnt', '&&', '||', '~~', 'ofclass', 'provides', 'in', 'notin'),
     boolean: ($) => choice("true", "false"),
-    identifier: ($) => /(##)?[a-zA-Z_]+[a-zA-Z0-9_]*/,
+    identifier: ($) => /(##)?(&)?[a-zA-Z_]+[a-zA-Z0-9_]*/,
     number: ($) => choice(/\d+/, /\$[0-9a-fA-F]+/, /\$\$(0|1)+/),
     string_single_quoted: ($) => seq("'", /[^\']*/, "'"),
     string_double_quoted: ($) => seq('"', /[^\"]*/, '"')

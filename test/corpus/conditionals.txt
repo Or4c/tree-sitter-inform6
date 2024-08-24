@@ -414,3 +414,67 @@ Single If with no block and additional statements
                 (identifier))))
           (return
             (string_double_quoted)))))
+
+
+==================
+for loop without block and a nested if/else wuthout block
+==================
+
+[ Main;
+    for (i=0:i<8:i++)
+        if ((parser_one.&number)->i ~= (parser_two.&number)->i)
+            return -2;
+    return -1;
+];
+
+-----
+(source_file
+    (routine
+        (function_sig
+            (identifier)
+        )
+        (function_block
+            (for_loop
+                (identifier)
+                (number)
+                (binary_expression
+                    (identifier)
+                    (operator)
+                    (number)
+                )
+                (unary_expression
+                    (identifier)
+                )
+                (conditional
+                    (array_access
+                        (binary_expression
+                            (array_access
+                                (property_access
+                                    (identifier)
+                                    (identifier)
+                                )
+                                (identifier)
+                            )
+                            (operator)
+                            (property_access
+                                (identifier)
+                                (identifier)
+                            )
+                        )
+                        (identifier)
+                    )
+                    (return
+                        (unary_expression
+                            (number)
+                        )
+                    )
+                )
+            )
+            (return
+                (unary_expression
+                    (number)
+                )
+            )
+        )
+    )
+)
