@@ -125,7 +125,7 @@ Give
 ==================
 
 [ Main;
-    give PlantStickingUp ~absent;
+    give PlantStickingUp ~locked ~lockable ~openable open;
 ];
 
 -----
@@ -134,6 +134,9 @@ Give
         (function_sig (identifier))
         (function_block
             (give
+                (identifier)
+                (identifier)
+                (identifier)
                 (identifier)
                 (identifier)
             )

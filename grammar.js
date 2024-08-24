@@ -95,7 +95,7 @@ module.exports = grammar({
     increment: ($) => seq(choice($.identifier, $.property_access), "++", ";"),
     decrement: ($) => seq(choice($.identifier, $.property_access), "--", ";"),
     break: ($) => seq("break", ";"),
-    give: ($) => seq("give", $.identifier, optional('~'), $.identifier, ";"),
+    give: ($) => seq("give", $.identifier, repeat1(seq(optional('~'), $.identifier)), ";"),
     action: ($) => choice(
       seq("<", repeat1($.identifier), '>', ";"),
       seq("<<", repeat1($.identifier), '>>', ";")
