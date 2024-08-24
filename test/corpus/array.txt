@@ -108,6 +108,19 @@ Array task_scores -> 1 1 1 1 1 1;
         (number)
         (number)))
 
+==================
+Buffer Array
+==================
+
+Array notifs_copy buffer LEN_NOTIFICATIONS_FALLBACK;
+
+-----
+
+(source_file
+    (array
+    (identifier)
+    (identifier)))
+
 
 ==================
 Array access brackets

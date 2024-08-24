@@ -6,10 +6,13 @@ Compiler definitions
 #Ifndef DEBUG;
 #Iftrue DEBUG;
 #Iffalse DEBUG;
+#IfDef DEBUG;
 #Endif;
 
 ----
   (source_file
+    (compiler_directive
+        (identifier))
     (compiler_directive
         (identifier))
     (compiler_directive

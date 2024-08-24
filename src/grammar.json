@@ -1293,6 +1293,10 @@
             {
               "type": "STRING",
               "value": "string"
+            },
+            {
+              "type": "STRING",
+              "value": "buffer"
             }
           ]
         },
@@ -1588,28 +1592,34 @@
           "type": "CHOICE",
           "members": [
             {
-              "type": "STRING",
-              "value": "#Ifdef"
+              "type": "PATTERN",
+              "value": "#Ifdef",
+              "flags": "i"
             },
             {
-              "type": "STRING",
-              "value": "#Ifndef"
+              "type": "PATTERN",
+              "value": "#Ifndef",
+              "flags": "i"
             },
             {
-              "type": "STRING",
-              "value": "#Iftrue"
+              "type": "PATTERN",
+              "value": "#Iftrue",
+              "flags": "i"
             },
             {
-              "type": "STRING",
-              "value": "#Iffalse"
+              "type": "PATTERN",
+              "value": "#Iffalse",
+              "flags": "i"
             },
             {
-              "type": "STRING",
-              "value": "#Ifnot"
+              "type": "PATTERN",
+              "value": "#Ifnot",
+              "flags": "i"
             },
             {
-              "type": "STRING",
-              "value": "#Endif"
+              "type": "PATTERN",
+              "value": "#Endif",
+              "flags": "i"
             }
           ]
         },

@@ -101,8 +101,6 @@ module.exports = grammar({
       seq("<<", repeat1($.identifier), '>>', ";")
     ),
 
-
-
     tree_statement: ($) => choice(
       seq("move", $._expression, "to", $._expression, ";"),
       seq("remove", $._expression, ";"),
@@ -151,7 +149,7 @@ module.exports = grammar({
     serial: ($) => seq("Serial", $._expression, ";"),
     release: ($) => seq("Release", $._expression, ";"),
     global: ($) => seq("Global", $.identifier, optional(seq("=", $._expression)), ";"),
-    array: ($) => seq("Array", $.identifier, choice("->", "-->", "table", "string"), repeat1($._expression), ";"),
+    array: ($) => seq("Array", $.identifier, choice("->", "-->", "table", "string", "buffer"), repeat1($._expression), ";"),
     routine: ($) => seq("[", $.function_sig, optional($.function_block), "]", ";"),
     attribute: ($) => seq("Attribute", $.identifier, ";"),
     include: ($) => seq("Include", $.string_double_quoted, ";"),
@@ -181,7 +179,7 @@ module.exports = grammar({
     replace: ($) => seq("Replace", $.identifier, ";"),
     compiler_message: ($) => seq("Message", optional(choice("error", "warning", "fatalerror")), $.string_double_quoted, ";"),
     compiler_directive: ($) => seq(
-      choice('#Ifdef', '#Ifndef', '#Iftrue', '#Iffalse', '#Ifnot', '#Endif'),
+      choice(/#Ifdef/i, /#Ifndef/i, /#Iftrue/i, /#Iffalse/i, /#Ifnot/i, /#Endif/i),
       optional($._expression), ";"),
 
     // Object Rules

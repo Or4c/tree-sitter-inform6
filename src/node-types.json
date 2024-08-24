@@ -2533,30 +2533,6 @@
     "named": false
   },
   {
-    "type": "#Endif",
-    "named": false
-  },
-  {
-    "type": "#Ifdef",
-    "named": false
-  },
-  {
-    "type": "#Iffalse",
-    "named": false
-  },
-  {
-    "type": "#Ifndef",
-    "named": false
-  },
-  {
-    "type": "#Ifnot",
-    "named": false
-  },
-  {
-    "type": "#Iftrue",
-    "named": false
-  },
-  {
     "type": "%",
     "named": false
   },
@@ -2722,6 +2698,10 @@
   },
   {
     "type": "break",
+    "named": false
+  },
+  {
+    "type": "buffer",
     "named": false
   },
   {
