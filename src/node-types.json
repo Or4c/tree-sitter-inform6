@@ -767,6 +767,10 @@
         {
           "type": "identifier",
           "named": true
+        },
+        {
+          "type": "property_access",
+          "named": true
         }
       ]
     }
@@ -1399,6 +1403,10 @@
       "types": [
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "property_access",
           "named": true
         }
       ]

@@ -49,7 +49,6 @@ module.exports = grammar({
       $.give,
       $.action,
       $.compiler_directive,
-
     ),
 
     _loop: ($) => choice(
@@ -93,8 +92,8 @@ module.exports = grammar({
       seq("rfalse", ";"),
       seq($.string_double_quoted, repeat(seq(',', $._expression)), ";"),
     ),
-    increment: ($) => seq($.identifier, "++", ";"),
-    decrement: ($) => seq($.identifier, "--", ";"),
+    increment: ($) => seq(choice($.identifier, $.property_access), "++", ";"),
+    decrement: ($) => seq(choice($.identifier, $.property_access), "--", ";"),
     break: ($) => seq("break", ";"),
     give: ($) => seq("give", $.identifier, optional('~'), $.identifier, ";"),
     action: ($) => choice(
@@ -241,13 +240,16 @@ module.exports = grammar({
           seq(
             choice(
               $.identifier,
-              seq($.identifier, $.routine_message)),
+              seq($.identifier, $.routine_message)
+            ),
             choice('.', '::'))),
         choice(
           $.identifier,
           $.array_access,
           seq(
-            $.identifier, $.routine_message)))
+            $.identifier, $.routine_message),
+        )
+      )
     ),
 
     array_access: ($) => prec.left(choice(

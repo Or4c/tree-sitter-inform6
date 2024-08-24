@@ -168,6 +168,28 @@ Object Property assignment
 )
 
 ==================
+Object Property increment
+==================
+
+[ Main;
+    sp.number++;
+];
+
+-----
+
+(source_file
+      (routine
+        (function_sig
+          (identifier))
+        (function_block
+          (increment
+            (property_access
+              (identifier)
+              (identifier))))))
+
+
+
+==================
 Print return value with interpolations
 ==================
 
