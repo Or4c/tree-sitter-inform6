@@ -159,10 +159,10 @@ module.exports = grammar({
     include: ($) => seq("Include", $.string_double_quoted, ";"),
     grammar: ($) => seq(
       choice("Verb", "Extend"),
-      $.string_single_quoted,
+      $._string,
       repeat(
         choice(
-          $.string_single_quoted,
+          $._string,
           $.identifier,
         )), repeat1($.grammar_clause), ";"),
 
@@ -180,7 +180,7 @@ module.exports = grammar({
           $.string_single_quoted,
           seq($.string_single_quoted, repeat1(seq('/', $.string_single_quoted))),
           $.identifier,
-          seq(choice('noun', 'scope'), '=', $.identifier)
+          seq(choice('noun', 'scope'), optional(seq('=', $.identifier)))
         )
       ),
       '->',
@@ -217,11 +217,8 @@ module.exports = grammar({
     object_body: ($) => seq(
       $.prop_mod, $._object_data, repeat(seq(',', choice(seq($.prop_mod, $._object_data), $._object_data)))
     ),
-
-    class_assignment: ($) => seq('class', $.identifier),
-
+    _object_data: ($) => seq(field('data_id', repeat1(seq(optional('~'), $.identifier))), optional(choice($._data_list_value, $._data_list, $.embedded_routine))),
     _data_list: ($) => seq($._data_list_value, repeat1($._data_list_value)),
-
     _data_list_value: ($) => choice(
       $.identifier,
       $.number,
@@ -230,8 +227,7 @@ module.exports = grammar({
       $.prop_mod
     ),
 
-
-    _object_data: ($) => seq(field('data_id', repeat1(seq(optional('~'), $.identifier))), optional(choice($._data_list_value, $._data_list, $.embedded_routine))),
+    class_assignment: ($) => seq('class', $.identifier),
 
     // Expression rules
     property_access: ($) => prec.left(1,

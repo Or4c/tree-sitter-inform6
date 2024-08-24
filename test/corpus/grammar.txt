@@ -85,3 +85,38 @@ Verb 'use' 'employ' 'utilise'
         )
     )
 )
+
+==================
+Grammar token with double quoted string
+==================
+
+Verb "burst" "pop" "prick" "stab" "pierce"
+     * noun -> Burst;
+
+-----
+
+(source_file
+    (grammar
+    (string_double_quoted)
+    (string_double_quoted)
+    (string_double_quoted)
+    (string_double_quoted)
+    (string_double_quoted)
+    (grammar_clause
+        (identifier))))
+
+
+==================
+Grammar token with single identifier
+==================
+
+Verb "write"    * QuotedText -> Write;
+
+-----
+
+(source_file
+    (grammar
+    (string_double_quoted)
+    (grammar_clause
+        (identifier)
+        (identifier))))
