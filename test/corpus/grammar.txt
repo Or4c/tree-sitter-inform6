@@ -120,3 +120,31 @@ Verb "write"    * QuotedText -> Write;
     (grammar_clause
         (identifier)
         (identifier))))
+
+
+==================
+Grammar with double quoted string tokens
+==================
+
+
+Verb "write" "scribe"
+        * AnyWord "on" held              -> WriteOn
+        * QuotedText "on" held           -> WriteOn;
+
+
+-----
+
+  (source_file
+      (grammar
+        (string_double_quoted)
+        (string_double_quoted)
+        (grammar_clause
+          (identifier)
+          (string_double_quoted)
+          (identifier)
+          (identifier))
+        (grammar_clause
+          (identifier)
+          (string_double_quoted)
+          (identifier)
+          (identifier))))

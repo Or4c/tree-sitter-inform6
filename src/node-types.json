@@ -1372,6 +1372,10 @@
           "named": true
         },
         {
+          "type": "string_double_quoted",
+          "named": true
+        },
+        {
           "type": "string_single_quoted",
           "named": true
         }

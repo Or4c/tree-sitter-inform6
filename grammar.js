@@ -164,19 +164,12 @@ module.exports = grammar({
           $.identifier,
         )), repeat1($.grammar_clause), ";"),
 
-    replace: ($) => seq("Replace", $.identifier, ";"),
-    compiler_message: ($) => seq("Message", optional(choice("error", "warning", "fatalerror")), $.string_double_quoted, ";"),
-    compiler_directive: ($) => seq(
-      choice('#Ifdef', '#Ifndef', '#Iftrue', '#Iffalse', '#Ifnot', '#Endif'),
-      optional($._expression), ";"),
-
-
     grammar_clause: ($) => seq(
       '*',
       repeat(
         choice(
-          $.string_single_quoted,
-          seq($.string_single_quoted, repeat1(seq('/', $.string_single_quoted))),
+          $._string,
+          seq($._string, repeat1(seq('/', $._string))),
           $.identifier,
           seq(choice('noun', 'scope'), optional(seq('=', $.identifier)))
         )
@@ -184,6 +177,12 @@ module.exports = grammar({
       '->',
       $.identifier
     ),
+
+    replace: ($) => seq("Replace", $.identifier, ";"),
+    compiler_message: ($) => seq("Message", optional(choice("error", "warning", "fatalerror")), $.string_double_quoted, ";"),
+    compiler_directive: ($) => seq(
+      choice('#Ifdef', '#Ifndef', '#Iftrue', '#Iffalse', '#Ifnot', '#Endif'),
+      optional($._expression), ";"),
 
     // Object Rules
 
